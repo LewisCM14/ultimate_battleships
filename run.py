@@ -101,6 +101,15 @@ class GameBoard:
         print(f'\nSCORE: {self.score}\n')
 
 
+def create_board(board, name, score):
+    """
+    Uses the GameBoard class to create a board for the user
+    """
+    user_board = GameBoard(board, name, score)
+    GameBoard.print_board(user_board)
+    return user_board
+
+
 def check_ship_fits(ship_length, row, column, orientation):
     """
     Holds the logic to check if the placed ship fits
@@ -168,6 +177,8 @@ def run_game():
     """
     welcome_message()
     player_name = name_input()
+    player_board = create_board(BOARD, player_name, PLAYER_SCORE)
+    computer_board = create_board(BOARD, "COMPUTER'S", COMPUTER_SCORE)
 
 
 run_game()
