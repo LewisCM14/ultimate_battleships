@@ -36,7 +36,7 @@ class GameBoard:
         self.board = board
         self.name = name
         self.score = score
-    
+
     def print_board(self):
         """
          Prints the board to the terminal
@@ -67,6 +67,8 @@ def run_game():
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
     player_board = GameBoard([[' '] * 10 for x in range(10)], player_name, PLAYER_SCORE)
     GameBoard.print_board(player_board)
+    computer_board = GameBoard([[' '] * 10 for x in range(10)], "COMPUTER'S", COMPUTER_SCORE)
+    GameBoard.print_board(computer_board)
 
 
 run_game()
