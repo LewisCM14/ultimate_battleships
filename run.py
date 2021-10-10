@@ -97,7 +97,18 @@ def check_ship_fits(ship_length, row, column, orientation):
 
 
 def collision_check(board, row, column, orientation, ship_length):
-    pass
+    """
+    Holds the logic to check for ship collisions
+    """
+    if orientation == 'H':
+        for i in range(column, column + ship_length):
+            if board[row][i] == '+':
+                return True
+    else:
+        for i in range(row, row + ship_length):
+            if board[i][column] == '+':
+                return True
+    return False
 
 
 class Ships:
