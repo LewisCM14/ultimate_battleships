@@ -81,7 +81,19 @@ class GameBoard:
 
 
 def check_ship_fits(ship_length, row, column, orientation):
-    pass
+    """
+    Holds the logic to check if the placed ship fits
+    """
+    if orientation == 'H':
+        if column + ship_length > 9:
+            return False
+        else:
+            return True
+    else:
+        if row + ship_length > 9:
+            return False
+        else:
+            return True
 
 
 def collision_check(board, row, column, orientation, ship_length):
