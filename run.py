@@ -12,6 +12,10 @@ COMPUTER_SCORE = 0
 BOARD = [[' '] * 10 for x in range(10)]
 SIZE = '10x10'
 
+# Used when placing the differnt types of ships
+
+LENGTH_OF_SHIPS = [6, 4, 3, 2]
+
 
 def welcome_message():
     """
@@ -73,6 +77,20 @@ class GameBoard:
             print('%d|%s~' % (row_number, '~'.join(row)))
             row_number += 1
         print(f'\nSCORE: {self.score}\n')
+
+
+class Ships:
+    """
+    Places the ships randomly on the computers board,
+    allows for the player to place their own ships.
+    Checks ships fit and no collisions.
+    """
+    def __init__(self, board, ship, orientation, row, column):
+        self.board = board
+        self.ship = ship
+        self.orientation = orientation
+        self.row = row
+        self.column = column
 
 
 def run_game():
