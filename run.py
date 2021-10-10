@@ -1,6 +1,7 @@
 # Libraries
 
 import re
+import random
 
 # Used to hold the respective players score
 
@@ -91,6 +92,17 @@ class Ships:
         self.orientation = orientation
         self.row = row
         self.column = column
+    
+    def place_ships(self):
+        """
+        Places the ships, uses a while loop to ensure fitment
+        and no collisions.
+        """
+        for length in ship:
+            while True:
+                if board == computer_board:
+                    orientation, row, column = random.choice(['H', 'V']), random.randint(0, 9), random.randint(0, 9)
+                    if check_ship_fits(length, row, column, orientation):
 
 
 def run_game():
