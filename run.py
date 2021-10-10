@@ -19,7 +19,7 @@ LENGTH_OF_SHIPS = [6, 4, 3, 2]
 
 """
 Legend
-~ = co-ordiante doesn't hold ship/hasn't been guessed
+~ = co-ordiante doesn't hold ship/ hasn't been guessed
 + = co-ordinate holds a ship
 x = co-ordinate holds a ship that has been attacked
 - = co-ordinate that was gussesd and missed
@@ -52,6 +52,19 @@ def validate_team_name(name):
         return False
     else:
         return True
+
+
+def name_input():
+    """
+    Collects the user name input,
+    places it in a variable to use later.
+    """
+    while True:
+        player_name = input('PLEASE ENTER A TEAM NAME:\n')
+        if validate_team_name(player_name):
+            break
+    print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
+    return player_name
 
 
 class GameBoard:
@@ -135,7 +148,7 @@ class Ships:
         """
         for ship_length in LENGTH_OF_SHIPS:
             while True:
-                if self.board == run_game().computer_board:
+                if self.board == computer_board:
                     orientation, row, column = random.choice(['H', 'V']), random.randint(0, 9), random.randint(0, 9)
                     if check_ship_fits(ship_length, row, column, orientation):
                         if collision_check(self.board, row, column, orientation, ship_length) is False:
@@ -145,6 +158,7 @@ class Ships:
                             else:
                                 for i in range(row, row + ship_length):
                                     self.board[i][column] = '+'
+                            GameBoard.print_board(computer_board)
                             break
 
 
@@ -153,20 +167,7 @@ def run_game():
     Starts a new game.
     """
     welcome_message()
-    
-    while True:
-        player_name = input('PLEASE ENTER A TEAM NAME:\n')
-        if validate_team_name(player_name):
-            break
-    print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
-    
-    player_board = GameBoard(BOARD, player_name, PLAYER_SCORE)
-    GameBoard.print_board(player_board)
-    computer_board = GameBoard(BOARD, "COMPUTER'S", COMPUTER_SCORE)
-    GameBoard.print_board(computer_board)
-    
-    Ships.place_ships(computer_board)
-    GameBoard.print_board(computer_board)
+    player_name = name_input()
 
 
 run_game()
