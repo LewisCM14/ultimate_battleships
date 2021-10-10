@@ -22,14 +22,14 @@ Legend
 ~ = co-ordiante doesn't hold ship/ hasn't been guessed
 + = co-ordinate holds a ship
 x = co-ordinate holds a ship that has been attacked
-- = co-ordinate that was gussesd and missed
+- = co-ordinate that was gussesd and resulted in miss
 """
 
 
 def welcome_message():
     """
     Holds the print statments used in the welcome message,
-    displayed each time a new game begins
+    displayed each time a new game begins.
     """
     print('WELCOME TO BATTLESHIPS!')
     print(f'THE BOARD IS A GRID OF {SIZE} WITH FOUR SHIPS TO SINK')
@@ -82,14 +82,14 @@ class GameBoard:
 
     def get_letters_to_numbers(self):
         """
-        Converts the letters used for display to numbers for function
+        Converts the letters used for display to numbers for functional use.
         """
         letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
         return letters_to_numbers
 
     def print_board(self):
         """
-         Prints the board to the terminal
+         Prints the required board to the terminal.
         """
         print(f'{self.name} BOARD:\n')
         print('   A B C D E F G H I J ')
@@ -103,16 +103,21 @@ class GameBoard:
 
 def create_board(board, name, score):
     """
-    Uses the GameBoard class to create a board for the user
+    Uses the GameBoard class to create a board for the user.
     """
     user_board = GameBoard(board, name, score)
-    GameBoard.print_board(user_board)
     return user_board
+
+
+"""
+Creates a variable needed for use in ships class.
+"""
+computer_board = create_board(BOARD, "COMPUTER'S", COMPUTER_SCORE)
 
 
 def check_ship_fits(ship_length, row, column, orientation):
     """
-    Holds the logic to check if the placed ship fits
+    Holds the logic to check if the placed ship fits.
     """
     if orientation == 'H':
         if column + ship_length > 9:
@@ -128,7 +133,7 @@ def check_ship_fits(ship_length, row, column, orientation):
 
 def collision_check(board, row, column, orientation, ship_length):
     """
-    Holds the logic to check for ship collisions
+    Holds the logic to check for ship collisions upon placement.
     """
     if orientation == 'H':
         for i in range(column, column + ship_length):
@@ -145,7 +150,7 @@ class Ships:
     """
     Places the ships randomly on the computers board,
     allows for the player to place their own ships.
-    Checks ships fit and no collisions.
+    Check ships fit and no collisions.
     """
     def __init__(self, board):
         self.board = board
@@ -178,7 +183,8 @@ def run_game():
     welcome_message()
     player_name = name_input()
     player_board = create_board(BOARD, player_name, PLAYER_SCORE)
-    computer_board = create_board(BOARD, "COMPUTER'S", COMPUTER_SCORE)
+    GameBoard.print_board(player_board)
+    GameBoard.print_board(computer_board)
 
 
 run_game()
