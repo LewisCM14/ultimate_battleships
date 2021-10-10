@@ -13,6 +13,14 @@ BOARD = [[' '] * 10 for x in range(10)]
 SIZE = '10x10'
 
 
+def welcome_message():
+    print('WELCOME TO BATTLESHIPS!')
+    print(f'THE BOARD IS A GRID OF {SIZE} WITH FOUR SHIPS TO SINK')
+    print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
+    print('A TOTAL SCORE OF 15 IS REQUIRED TO WIN, 1 POINT PER HIT\n')
+    print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
+
+
 def validate_team_name(name):
     """
     Validates the input name is letters, numbers and underscores only.
@@ -67,16 +75,14 @@ def run_game():
     """
     Starts a new game.
     """
-    print('WELCOME TO BATTLESHIPS!')
-    print(f'THE BOARD IS A GRID OF {SIZE} WITH FOUR SHIPS TO SINK')
-    print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
-    print('A TOTAL SCORE OF 15 IS REQUIRED TO WIN, 1 POINT PER HIT\n')
-    print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
+    welcome_message()
+    
     while True:
         player_name = input('PLEASE ENTER A TEAM NAME:\n')
         if validate_team_name(player_name):
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
+    
     player_board = GameBoard(BOARD, player_name, PLAYER_SCORE)
     GameBoard.print_board(player_board)
     computer_board = GameBoard(BOARD, "COMPUTER'S", COMPUTER_SCORE)
