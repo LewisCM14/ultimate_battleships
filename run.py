@@ -2,6 +2,11 @@
 
 import re
 
+# Used to hold the respective players score
+
+PLAYER_SCORE = 0
+COMPUTER_SCORE = 0
+
 
 def validate_team_name(name):
     """
@@ -27,9 +32,10 @@ class GameBoard:
     players guess, marked to indicate if it was a hit or miss.
     """
 
-    def __init__(self, board, name):
+    def __init__(self, board, name, score):
         self.board = board
         self.name = name
+        self.score = score
     
     def print_board(self):
         """
@@ -42,6 +48,7 @@ class GameBoard:
         for row in self.board:
             print('%d|%s~' % (row_number, '~'.join(row)))
             row_number += 1
+        print(f'\nSCORE: {self.score}\n')
 
 
 def run_game():
@@ -58,7 +65,7 @@ def run_game():
         if validate_team_name(player_name):
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
-    player_board = GameBoard([[' '] * 10 for x in range(10)], player_name)
+    player_board = GameBoard([[' '] * 10 for x in range(10)], player_name, PLAYER_SCORE)
     GameBoard.print_board(player_board)
 
 
