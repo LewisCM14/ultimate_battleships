@@ -7,6 +7,11 @@ import re
 PLAYER_SCORE = 0
 COMPUTER_SCORE = 0
 
+# Used to determine board size and populate welcome message
+
+BOARD = [[' '] * 10 for x in range(10)]
+SIZE = '10x10'
+
 
 def validate_team_name(name):
     """
@@ -56,7 +61,7 @@ def run_game():
     Starts a new game.
     """
     print('WELCOME TO BATTLESHIPS!')
-    print('THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
+    print(f'THE BOARD IS A GRID OF {SIZE} WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
     print('A TOTAL SCORE OF 15 IS REQUIRED TO WIN, 1 POINT PER HIT\n')
     print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
@@ -65,9 +70,9 @@ def run_game():
         if validate_team_name(player_name):
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
-    player_board = GameBoard([[' '] * 10 for x in range(10)], player_name, PLAYER_SCORE)
+    player_board = GameBoard(BOARD, player_name, PLAYER_SCORE)
     GameBoard.print_board(player_board)
-    computer_board = GameBoard([[' '] * 10 for x in range(10)], "COMPUTER'S", COMPUTER_SCORE)
+    computer_board = GameBoard(BOARD, "COMPUTER'S", COMPUTER_SCORE)
     GameBoard.print_board(computer_board)
 
 
