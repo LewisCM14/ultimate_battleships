@@ -131,7 +131,13 @@ class Ships:
                     orientation, row, column = random.choice(['H', 'V']), random.randint(0, 9), random.randint(0, 9)
                     if check_ship_fits(ship_length, row, column, orientation):
                         if collision_check(self.board, row, column, orientation, ship_length) is False:
-                            pass
+                            if orientation == 'H':
+                                for i in range(column, column + ship_length):
+                                    self.board[row][i] = '+'
+                            else:
+                                for i in range(row, row + ship_length):
+                                    self.board[i][column] = '+'
+                            break
 
 
 def run_game():
@@ -149,6 +155,9 @@ def run_game():
     player_board = GameBoard(BOARD, player_name, PLAYER_SCORE)
     GameBoard.print_board(player_board)
     computer_board = GameBoard(BOARD, "COMPUTER'S", COMPUTER_SCORE)
+    GameBoard.print_board(computer_board)
+    
+    Ships.place_ships(computer_board)
     GameBoard.print_board(computer_board)
 
 
