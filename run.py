@@ -14,6 +14,10 @@ SIZE = '10x10'
 
 
 def welcome_message():
+    """
+    Holds the print statments used in the welcome message,
+    displayed each time a new game begins
+    """
     print('WELCOME TO BATTLESHIPS!')
     print(f'THE BOARD IS A GRID OF {SIZE} WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
