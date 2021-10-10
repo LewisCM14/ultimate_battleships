@@ -27,13 +27,15 @@ class GameBoard:
     players guess, marked to indicate if it was a hit or miss.
     """
 
-    def __init__(self, board):
+    def __init__(self, board, name):
         self.board = board
+        self.name = name
     
     def print_board(self):
         """
          Prints the board to the terminal
         """
+        print(f'{self.name} BOARD:\n')
         print('   A B C D E F G H I J ')
         print('   -------------------')
         row_number = 0
@@ -56,7 +58,7 @@ def run_game():
         if validate_team_name(player_name):
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
-    player_board = GameBoard([[' '] * 10 for x in range(10)])
+    player_board = GameBoard([[' '] * 10 for x in range(10)], player_name)
     GameBoard.print_board(player_board)
 
 
