@@ -58,13 +58,13 @@ class GameBoard:
         self.board = board
         self.name = name
         self.score = score
-    
-    """def get_letters_to_numbers():
-       
+
+    def get_letters_to_numbers(self):
+        """
         Converts the letters used for display to numbers for function
-       
+        """
         letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
-        return letters_to_numbers"""
+        return letters_to_numbers
 
     def print_board(self):
         """
@@ -80,29 +80,35 @@ class GameBoard:
         print(f'\nSCORE: {self.score}\n')
 
 
+def check_ship_fits(ship_length, row, column, orientation):
+    pass
+
+
+def collision_check(board, row, column, orientation, ship_length):
+    pass
+
+
 class Ships:
     """
     Places the ships randomly on the computers board,
     allows for the player to place their own ships.
     Checks ships fit and no collisions.
     """
-    def __init__(self, board, ship, orientation, row, column):
+    def __init__(self, board):
         self.board = board
-        self.ship = ship
-        self.orientation = orientation
-        self.row = row
-        self.column = column
-    
+
     def place_ships(self):
         """
         Places the ships, uses a while loop to ensure fitment
         and no collisions.
         """
-        for length in ship:
+        for ship_length in LENGTH_OF_SHIPS:
             while True:
-                if board == computer_board:
+                if self.board == run_game().computer_board:
                     orientation, row, column = random.choice(['H', 'V']), random.randint(0, 9), random.randint(0, 9)
-                    if check_ship_fits(length, row, column, orientation):
+                    if check_ship_fits(ship_length, row, column, orientation):
+                        if collision_check(self.board, row, column, orientation, ship_length) is False:
+                            pass
 
 
 def run_game():
