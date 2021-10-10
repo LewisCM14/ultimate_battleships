@@ -17,6 +17,14 @@ SIZE = '10x10'
 
 LENGTH_OF_SHIPS = [6, 4, 3, 2]
 
+"""
+Legend
+~ = co-ordiante doesn't hold ship/hasn't been guessed
++ = co-ordinate holds a ship
+x = co-ordinate holds a ship that has been attacked
+- = co-ordinate that was gussesd and missed
+"""
+
 
 def welcome_message():
     """
