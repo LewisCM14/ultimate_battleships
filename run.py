@@ -5,15 +5,15 @@ import random
 
 # Used to determine board size and populate welcome message
 
-BOARD = [[' '] * 10 for x in range(10)]
+BOARD = [['~'] * 10 for x in range(10)]
 SIZE = '10x10'
 
 
 """
 Legend
 ~ = co-ordiante doesn't hold ship/ hasn't been guessed
-+ = co-ordinate holds a ship
-x = co-ordinate holds a ship that has been attacked
+X = co-ordinate holds a ship
++ = co-ordinate holds a ship that has been attacked
 - = co-ordinate that was gussesd and resulted in miss
 """
 
@@ -81,11 +81,11 @@ def collision_check(board, row, column, orientation, ship_length):
     """
     if orientation == 'H':
         for i in range(column, column + ship_length):
-            if board[row][i] == '+':
+            if board[row][i] == 'X':
                 return True
     else:
         for i in range(row, row + ship_length):
-            if board[i][column] == '+':
+            if board[i][column] == 'X':
                 return True
     return False
 
@@ -117,11 +117,11 @@ class GameBoard:
          Prints the required board to the terminal.
         """
         print(f'{self.name} BOARD:\n')
-        print('   A B C D E F G H I J ')
-        print('   -------------------')
+        print('  A B C D E F G H I J ')
+        print('  -------------------')
         row_number = 0
         for row in self.board:
-            print('%d|%s~' % (row_number, '~'.join(row)))
+            print('%d|%s ' % (row_number, ' '.join(row)))
             row_number += 1
         print(f'\nSCORE: {self.score}\n')
 
@@ -134,19 +134,20 @@ class GameBoard:
         LENGTH_OF_SHIPS = [6, 4, 3, 2]
 
         for ship_length in LENGTH_OF_SHIPS:
-            if self.type == 'computer':
-                orientation = random.choice(['H', 'V'])
-                row = random.randint(0, 9)
-                column = random.randint(0, 9)
-                if check_ship_fits(ship_length, row, column, orientation):
-                    if collision_check(self.board, row, column, orientation, ship_length) is False:
-                        if orientation == 'H':
-                            for i in range(column, column + ship_length):
-                                self.board[row][i] = '+'
-                        else:
-                            for i in range(row, row + ship_length):
-                                self.board[i][column] = '+'
-                        break
+            while True:
+                if self.type == 'computer':
+                    orientation = random.choice(['H', 'V'])
+                    row = random.randint(0, 9)
+                    column = random.randint(0, 9)
+                    if check_ship_fits(ship_length, row, column, orientation):
+                        if collision_check(self.board, row, column, orientation, ship_length) is False:
+                            if orientation == 'H':
+                                for i in range(column, column + ship_length):
+                                    self.board[row][i] = 'X'
+                            else:
+                                for i in range(row, row + ship_length):
+                                    self.board[i][column] = 'X'
+                            break
 
 
 def run_game():
