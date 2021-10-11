@@ -3,19 +3,11 @@
 import re
 import random
 
-# Used to hold the respective players score
-
-PLAYER_SCORE = 0
-COMPUTER_SCORE = 0
-
 # Used to determine board size and populate welcome message
 
 BOARD = [[' '] * 10 for x in range(10)]
 SIZE = '10x10'
 
-# Used when placing the differnt types of ships
-
-LENGTH_OF_SHIPS = [6, 4, 3, 2]
 
 """
 Legend
@@ -67,52 +59,18 @@ def name_input():
     return player_name
 
 
-class GameBoard:
-    """
-    Each board holds the respective players ships,
-    the computers ship location will not be on display.
-    The relevant board is populated with the opposing
-    players guess, marked to indicate if it was a hit or miss.
-    """
-
-    def __init__(self, board, name, score):
-        self.board = board
-        self.name = name
-        self.score = score
-
-    def get_letters_to_numbers(self):
-        """
-        Converts the letters used for display to numbers for functional use.
-        """
-        letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
-        return letters_to_numbers
-
-    def print_board(self):
-        """
-         Prints the required board to the terminal.
-        """
-        print(f'{self.name} BOARD:\n')
-        print('   A B C D E F G H I J ')
-        print('   -------------------')
-        row_number = 0
-        for row in self.board:
-            print('%d|%s~' % (row_number, '~'.join(row)))
-            row_number += 1
-        print(f'\nSCORE: {self.score}\n')
-
-
-def create_board(board, name, score):
-    """
+"""def create_board(board, name, score):
+    
     Uses the GameBoard class to create a board for the user.
-    """
+    
     user_board = GameBoard(board, name, score)
-    return user_board
+    return user_board"""
 
 
 """
 Creates a variable needed for use in ships class.
 """
-computer_board = create_board(BOARD, "COMPUTER'S", COMPUTER_SCORE)
+# computer_board = create_board(BOARD, "COMPUTER'S", COMPUTER_SCORE)
 
 
 def check_ship_fits(ship_length, row, column, orientation):
@@ -146,6 +104,14 @@ def collision_check(board, row, column, orientation, ship_length):
     return False
 
 
+def get_letters_to_numbers(self):
+    """
+    Converts the letters used for display to numbers for functional use.
+    """
+    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
+    return letters_to_numbers
+
+
 class Ships:
     """
     Places the ships randomly on the computers board,
@@ -160,20 +126,73 @@ class Ships:
         Places the ships, uses a while loop to ensure fitment
         and no collisions.
         """
+        LENGTH_OF_SHIPS = [6, 4, 3, 2]
+
         for ship_length in LENGTH_OF_SHIPS:
-            while True:
-                if self.board == computer_board:
-                    orientation, row, column = random.choice(['H', 'V']), random.randint(0, 9), random.randint(0, 9)
-                    if check_ship_fits(ship_length, row, column, orientation):
-                        if collision_check(self.board, row, column, orientation, ship_length) is False:
-                            if orientation == 'H':
-                                for i in range(column, column + ship_length):
-                                    self.board[row][i] = '+'
-                            else:
-                                for i in range(row, row + ship_length):
-                                    self.board[i][column] = '+'
-                            GameBoard.print_board(computer_board)
-                            break
+            if self.board == computer_board:
+                orientation = random.choice(['H', 'V'])
+                print(orientation)
+                row = random.randint(0, 9)
+                column = random.randint(0, 9)
+                if check_ship_fits(ship_length, row, column, orientation):
+                    if collision_check(self.board, row, column, orientation, ship_length) is False:
+                        if orientation == 'H':
+                            for i in range(column, column + ship_length):
+                                self.board[row][i] = '+'
+                        else:
+                            for i in range(row, row + ship_length):
+                                self.board[i][column] = '+'
+                        break
+
+
+class GameBoard:
+    """
+    Each board holds the respective players ships,
+    the computers ship location will not be on display.
+    The relevant board is populated with the opposing
+    players guess, marked to indicate if it was a hit or miss.
+    """
+
+    def __init__(self, board, name, score, type):
+        self.board = board
+        self.name = name
+        self.score = score
+        self.type = type
+
+    def print_board(self):
+        """
+         Prints the required board to the terminal.
+        """
+        print(f'{self.name} BOARD:\n')
+        print('   A B C D E F G H I J ')
+        print('   -------------------')
+        row_number = 0
+        for row in self.board:
+            print('%d|%s~' % (row_number, '~'.join(row)))
+            row_number += 1
+        print(f'\nSCORE: {self.score}\n')
+
+    def place_ships(self):
+        """
+        Places the ships, uses a while loop to ensure fitment
+        and no collisions.
+        """
+        LENGTH_OF_SHIPS = [6, 4, 3, 2]
+
+        for ship_length in LENGTH_OF_SHIPS:
+            if self.type == 'computer':
+                orientation = random.choice(['H', 'V'])
+                row = random.randint(0, 9)
+                column = random.randint(0, 9)
+                if check_ship_fits(ship_length, row, column, orientation):
+                    if collision_check(self.board, row, column, orientation, ship_length) is False:
+                        if orientation == 'H':
+                            for i in range(column, column + ship_length):
+                                self.board[row][i] = '+'
+                        else:
+                            for i in range(row, row + ship_length):
+                                self.board[i][column] = '+'
+                        break
 
 
 def run_game():
@@ -182,9 +201,13 @@ def run_game():
     """
     welcome_message()
     player_name = name_input()
-    player_board = create_board(BOARD, player_name, PLAYER_SCORE)
+    player_board = GameBoard(BOARD, player_name, 0, 'player')
+    computer_board = GameBoard(BOARD, "COMPUTER's", 0, 'computer')
     GameBoard.print_board(player_board)
     GameBoard.print_board(computer_board)
+    GameBoard.place_ships(computer_board)
+    GameBoard.print_board(computer_board)
+
 
 
 run_game()
