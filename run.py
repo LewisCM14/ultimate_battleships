@@ -59,20 +59,6 @@ def name_input():
     return player_name
 
 
-"""def create_board(board, name, score):
-    
-    Uses the GameBoard class to create a board for the user.
-    
-    user_board = GameBoard(board, name, score)
-    return user_board"""
-
-
-"""
-Creates a variable needed for use in ships class.
-"""
-# computer_board = create_board(BOARD, "COMPUTER'S", COMPUTER_SCORE)
-
-
 def check_ship_fits(ship_length, row, column, orientation):
     """
     Holds the logic to check if the placed ship fits.
@@ -112,39 +98,6 @@ def get_letters_to_numbers(self):
     return letters_to_numbers
 
 
-class Ships:
-    """
-    Places the ships randomly on the computers board,
-    allows for the player to place their own ships.
-    Check ships fit and no collisions.
-    """
-    def __init__(self, board):
-        self.board = board
-
-    def place_ships(self):
-        """
-        Places the ships, uses a while loop to ensure fitment
-        and no collisions.
-        """
-        LENGTH_OF_SHIPS = [6, 4, 3, 2]
-
-        for ship_length in LENGTH_OF_SHIPS:
-            if self.board == computer_board:
-                orientation = random.choice(['H', 'V'])
-                print(orientation)
-                row = random.randint(0, 9)
-                column = random.randint(0, 9)
-                if check_ship_fits(ship_length, row, column, orientation):
-                    if collision_check(self.board, row, column, orientation, ship_length) is False:
-                        if orientation == 'H':
-                            for i in range(column, column + ship_length):
-                                self.board[row][i] = '+'
-                        else:
-                            for i in range(row, row + ship_length):
-                                self.board[i][column] = '+'
-                        break
-
-
 class GameBoard:
     """
     Each board holds the respective players ships,
@@ -174,8 +127,9 @@ class GameBoard:
 
     def place_ships(self):
         """
-        Places the ships, uses a while loop to ensure fitment
-        and no collisions.
+        Places the ships randomly on the computers board,
+        allows for the player to place their own ships.
+        Check ships fit and no collisions.
         """
         LENGTH_OF_SHIPS = [6, 4, 3, 2]
 
@@ -207,7 +161,6 @@ def run_game():
     GameBoard.print_board(computer_board)
     GameBoard.place_ships(computer_board)
     GameBoard.print_board(computer_board)
-
 
 
 run_game()
