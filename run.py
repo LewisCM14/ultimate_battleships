@@ -1,4 +1,6 @@
-# Libraries
+"""
+Libraries
+"""
 
 import re
 import random
@@ -90,7 +92,7 @@ def collision_check(board, row, column, orientation, ship_length):
     return False
 
 
-def get_letters_to_numbers(self):
+def get_letters_to_numbers():
     """
     Converts the letters used for display to numbers for functional use.
     """
@@ -106,11 +108,11 @@ class GameBoard:
     players guess, marked to indicate if it was a hit or miss.
     """
 
-    def __init__(self, board, name, score, type):
+    def __init__(self, board, name, score, user):
         self.board = board
         self.name = name
         self.score = score
-        self.type = type
+        self.user = user
 
     def print_board(self):
         """
@@ -131,11 +133,11 @@ class GameBoard:
         allows for the player to place their own ships.
         Check ships fit and no collisions.
         """
-        LENGTH_OF_SHIPS = [6, 4, 3, 2]
+        length_of_ships = [6, 4, 3, 2]
 
-        for ship_length in LENGTH_OF_SHIPS:
+        for ship_length in length_of_ships:
             while True:
-                if self.type == 'computer':
+                if self.user == 'computer':
                     orientation = random.choice(['H', 'V'])
                     row = random.randint(0, 9)
                     column = random.randint(0, 9)
