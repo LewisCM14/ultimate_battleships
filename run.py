@@ -7,7 +7,8 @@ import random
 
 # Used to determine board size and populate welcome message
 
-BOARD = [['~'] * 10 for x in range(10)]
+# BOARDcomputer = [['~'] * 10 for x in range(10)]
+# BOARDplayer = [['~'] * 10 for x in range(10)]
 SIZE = '10x10'
 
 # Converts the letters used for display to numbers for functional use.
@@ -163,8 +164,8 @@ class GameBoard:
     players guess, marked to indicate if it was a hit or miss.
     """
 
-    def __init__(self, board, name, score, user):
-        self.board = board
+    def __init__(self, name, score, user):
+        self.board = [['~'] * 10 for x in range(10)]
         self.name = name
         self.score = score
         self.user = user
@@ -189,8 +190,10 @@ class GameBoard:
         Also Checks the ship fits with no collisions.
         """
         length_of_ships = [6, 4, 3, 2]
+        print(f'user is {self.user}')
 
         for ship_length in length_of_ships:
+
             while True:
                 if self.user == 'computer':
                     orientation = random.choice(['H', 'V'])
@@ -222,19 +225,22 @@ class GameBoard:
 
 
 def run_game():
-    """
-    Starts a new game.
-    """
     welcome_message()
     player_name = name_input()
-    player_board = GameBoard(BOARD, player_name, 0, 'player')
-    computer_board = GameBoard(BOARD, "COMPUTER's", 0, 'computer')
-    GameBoard.print_board(player_board)
-    GameBoard.print_board(computer_board)
-    GameBoard.place_ships(computer_board)
-    GameBoard.print_board(computer_board)
-    GameBoard.print_board(player_board)
-    GameBoard.place_ships(player_board)
+
+    computer_board = GameBoard("COMPUTER's", 0, 'computer')
+    computer_board.place_ships()
+    computer_board.print_board()
+
+    player_board = GameBoard(player_name, 0, 'player')
+    player_board.place_ships()
+    player_board.print_board()  # bugfix
+
+    print(f"here are the boards\n")
+    computer_board.print_board()
+    player_board.print_board()
+
+   # computer_board.print_board()  # check ships being added randomly
 
 
 run_game()
