@@ -70,11 +70,13 @@ def check_ship_fits(ship_length, row, column, orientation):
     """
     if orientation == 'H':
         if column + ship_length > 9:
+            print('SHIP DOES NOT FIT, TRY AGAIN!\n')
             return False
         else:
             return True
     else:
         if row + ship_length > 9:
+            print('SHIP DOES NOT FIT, TRY AGAIN!\n')
             return False
         else:
             return True
@@ -87,10 +89,12 @@ def collision_check(board, row, column, orientation, ship_length):
     if orientation == 'H':
         for i in range(column, column + ship_length):
             if board[row][i] == 'X':
+                print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
                 return True
     else:
         for i in range(row, row + ship_length):
             if board[i][column] == 'X':
+                print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
                 return True
     return False
 
@@ -102,13 +106,13 @@ def ship_prompt(ship_length):
     print('THE SAME POINT CANNOT BE USED TWICE, HORIZONTAL AND VERTICAL PLACEMENT ONLY')
 
     if ship_length == 6:
-        print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)')
+        print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
     elif ship_length == 4:
-        print('PLEASE PLACE THE BATTLECRUISER (1x4)')
+        print('PLEASE PLACE THE BATTLECRUISER (1x4)\n')
     elif ship_length == 3:
-        print('PLEASE PLACE THE SUBMARINE (1x3)')
+        print('PLEASE PLACE THE SUBMARINE (1x3)\n')
     elif ship_length == 2:
-        print('PLEASE PLACE THE FRIGATE (1x2)')
+        print('PLEASE PLACE THE FRIGATE (1x2)\n')
 
 
 def ship_input():
