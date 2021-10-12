@@ -5,12 +5,6 @@ Libraries
 import re
 import random
 
-# Used to determine board size and populate welcome message
-
-# BOARDcomputer = [['~'] * 10 for x in range(10)]
-# BOARDplayer = [['~'] * 10 for x in range(10)]
-SIZE = '10x10'
-
 # Converts the letters used for display to numbers for functional use.
 
 LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
@@ -30,7 +24,7 @@ def welcome_message():
     displayed each time a new game begins.
     """
     print('WELCOME TO BATTLESHIPS!')
-    print(f'THE BOARD IS A GRID OF {SIZE} WITH FOUR SHIPS TO SINK')
+    print('THE BOARD IS A GRID OF 10x10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
     print('A TOTAL SCORE OF 15 IS REQUIRED TO WIN, 1 POINT PER HIT\n')
     print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
@@ -144,7 +138,6 @@ def ship_input():
     while True:
         try:
             row = input('ENTER DESIRED ROW (0-9): ')
-            print(' ')
             if row in '0123456789':
                 row = int(row)
                 break
@@ -190,7 +183,6 @@ class GameBoard:
         Also Checks the ship fits with no collisions.
         """
         length_of_ships = [6, 4, 3, 2]
-        print(f'user is {self.user}')
 
         for ship_length in length_of_ships:
 
@@ -220,27 +212,28 @@ class GameBoard:
                                 else:
                                     for i in range(row, row + ship_length):
                                         self.board[i][column] = 'X'
+                                print(' ')
                                 self.print_board()
                                 break
 
 
 def run_game():
+    """
+    Starts a new game.
+    """
     welcome_message()
     player_name = name_input()
 
+    player_board = GameBoard(player_name, 0, 'player')
     computer_board = GameBoard("COMPUTER's", 0, 'computer')
+
+    player_board.print_board()
+    computer_board.print_board()
+
     computer_board.place_ships()
     computer_board.print_board()
 
-    player_board = GameBoard(player_name, 0, 'player')
     player_board.place_ships()
-    player_board.print_board()  # bugfix
-
-    print(f"here are the boards\n")
-    computer_board.print_board()
-    player_board.print_board()
-
-   # computer_board.print_board()  # check ships being added randomly
 
 
 run_game()
