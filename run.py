@@ -1,4 +1,6 @@
-# Libraries
+"""
+Libraries
+"""
 
 import re
 import random
@@ -65,10 +67,10 @@ class GameBoard:
 
     LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
 
-    def __init__(self, name, score, user):
+    def __init__(self, name, user):
         self.board = [['~'] * 10 for x in range(10)]
+        self.score = 0
         self.name = name
-        self.score = score
         self.user = user
 
     def print_board(self):
@@ -90,14 +92,20 @@ class GameBoard:
         """
         if orientation == 'H':
             if column + ship_length > 9:
-                print('SHIP DOES NOT FIT, TRY AGAIN!\n')
-                return False
+                if self.user == 'player':
+                    print('SHIP DOES NOT FIT, TRY AGAIN!\n')
+                    return False
+                else:
+                    return False
             else:
                 return True
         else:
             if row + ship_length > 9:
-                print('SHIP DOES NOT FIT, TRY AGAIN!\n')
-                return False
+                if self.user == 'player':
+                    print('SHIP DOES NOT FIT, TRY AGAIN!\n')
+                    return False
+                else:
+                    return False
             else:
                 return True
 
@@ -108,13 +116,19 @@ class GameBoard:
         if orientation == 'H':
             for i in range(column, column + ship_length):
                 if board[row][i] == 'X':
-                    print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
-                    return True
+                    if self.user == 'player':
+                        print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
+                        return True
+                    else:
+                        return True
         else:
             for i in range(row, row + ship_length):
                 if board[i][column] == 'X':
-                    print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
-                    return True
+                    if self.user == 'player':
+                        print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
+                        return True
+                    else:
+                        return True
         return False
 
     def ship_prompt(self, ship_length):
@@ -217,8 +231,8 @@ def run_game():
     """
     welcome_message()
     player_name = name_input()
-    player_board = GameBoard(player_name, 0, 'player')
-    computer_board = GameBoard("COMPUTER's", 0, 'computer')
+    player_board = GameBoard(player_name, 'player')
+    computer_board = GameBoard("COMPUTER's", 'computer')
     player_board.print_board()
     computer_board.print_board()
     computer_board.place_ships()
