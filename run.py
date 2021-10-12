@@ -100,6 +100,29 @@ def get_letters_to_numbers():
     return letters_to_numbers
 
 
+def ship_prompt(length_of_ships):
+    """
+    Prints out to the user which ship they are placing.
+    """
+    for ship_length in length_of_ships:
+        if ship_length == 6:
+            print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)')
+        elif ship_length == 4:
+            print('PLEASE PLACE THE BATTLECRUISER (1x4)')
+        elif ship_length == 3:
+            print('PLEASE PLACE THE SUBMARINE (1x3)')
+        elif ship_length == 2:
+            print('PLEASE PLACE THE FRIGATE (1x2)')
+
+
+def ship_input(place_ship):
+    """
+    Collects the users desired:
+    orientation, row, column.
+    Then used to place the ship on their board.
+    """
+
+
 class GameBoard:
     """
     Each board holds the respective players ships,
@@ -131,7 +154,7 @@ class GameBoard:
         """
         Places the ships randomly on the computers board,
         allows for the player to place their own ships.
-        Check ships fit and no collisions.
+        Also Checks the ship fits with no collisions.
         """
         length_of_ships = [6, 4, 3, 2]
 
@@ -141,6 +164,19 @@ class GameBoard:
                     orientation = random.choice(['H', 'V'])
                     row = random.randint(0, 9)
                     column = random.randint(0, 9)
+                    if check_ship_fits(ship_length, row, column, orientation):
+                        if collision_check(self.board, row, column, orientation, ship_length) is False:
+                            if orientation == 'H':
+                                for i in range(column, column + ship_length):
+                                    self.board[row][i] = 'X'
+                            else:
+                                for i in range(row, row + ship_length):
+                                    self.board[i][column] = 'X'
+                            break
+                else:
+                    place_ship = True
+                    ship_prompt(length_of_ships)
+                    row, column, orientation = ship_input(place_ship)
                     if check_ship_fits(ship_length, row, column, orientation):
                         if collision_check(self.board, row, column, orientation, ship_length) is False:
                             if orientation == 'H':
@@ -163,7 +199,6 @@ def run_game():
     GameBoard.print_board(player_board)
     GameBoard.print_board(computer_board)
     GameBoard.place_ships(computer_board)
-    GameBoard.print_board(computer_board)
 
 
 run_game()
