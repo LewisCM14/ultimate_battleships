@@ -223,16 +223,11 @@ def run_game():
     """
     welcome_message()
     player_name = name_input()
-
     player_board = GameBoard(player_name, 0, 'player')
     computer_board = GameBoard("COMPUTER's", 0, 'computer')
-
     player_board.print_board()
     computer_board.print_board()
-
     computer_board.place_ships()
-    computer_board.print_board()
-
     player_board.place_ships()
 
 
