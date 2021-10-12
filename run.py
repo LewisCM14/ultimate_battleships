@@ -10,6 +10,9 @@ import random
 BOARD = [['~'] * 10 for x in range(10)]
 SIZE = '10x10'
 
+# Converts the letters used for display to numbers for functional use.
+
+LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
 
 """
 Legend
@@ -92,35 +95,60 @@ def collision_check(board, row, column, orientation, ship_length):
     return False
 
 
-def get_letters_to_numbers():
-    """
-    Converts the letters used for display to numbers for functional use.
-    """
-    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
-    return letters_to_numbers
-
-
-def ship_prompt(length_of_ships):
+def ship_prompt(ship_length):
     """
     Prints out to the user which ship they are placing.
     """
-    for ship_length in length_of_ships:
-        if ship_length == 6:
-            print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)')
-        elif ship_length == 4:
-            print('PLEASE PLACE THE BATTLECRUISER (1x4)')
-        elif ship_length == 3:
-            print('PLEASE PLACE THE SUBMARINE (1x3)')
-        elif ship_length == 2:
-            print('PLEASE PLACE THE FRIGATE (1x2)')
+    print('THE SAME POINT CANNOT BE USED TWICE, HORIZONTAL AND VERTICAL PLACEMENT ONLY')
+
+    if ship_length == 6:
+        print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)')
+    elif ship_length == 4:
+        print('PLEASE PLACE THE BATTLECRUISER (1x4)')
+    elif ship_length == 3:
+        print('PLEASE PLACE THE SUBMARINE (1x3)')
+    elif ship_length == 2:
+        print('PLEASE PLACE THE FRIGATE (1x2)')
 
 
-def ship_input(place_ship):
+def ship_input():
     """
     Collects the users desired:
     orientation, row, column.
     Then used to place the ship on their board.
     """
+    while True:
+        try:
+            orientation = input('ENTER ORIENTATION (H OR V): ').upper()
+            if orientation == 'H' or orientation == 'V':
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print('PLEASE ENTER A VALID ORIENTATION')
+    while True:
+        try:
+            input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+            if input_column in 'ABCDEFGHIJ':
+                column = LETTERS_TO_NUMBERS[input_column]
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+    while True:
+        try:
+            row = input('ENTER DESIRED ROW (0-9): ')
+            print(' ')
+            if row in '0123456789':
+                row = int(row)
+                break
+            else:
+                raise ValueError
+        except ValueError:
+            print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+
+    return orientation, column, row
 
 
 class GameBoard:
@@ -174,18 +202,19 @@ class GameBoard:
                                     self.board[i][column] = 'X'
                             break
                 else:
-                    place_ship = True
-                    ship_prompt(length_of_ships)
-                    row, column, orientation = ship_input(place_ship)
-                    if check_ship_fits(ship_length, row, column, orientation):
-                        if collision_check(self.board, row, column, orientation, ship_length) is False:
-                            if orientation == 'H':
-                                for i in range(column, column + ship_length):
-                                    self.board[row][i] = 'X'
-                            else:
-                                for i in range(row, row + ship_length):
-                                    self.board[i][column] = 'X'
-                            break
+                    if self.user == 'player':
+                        ship_prompt(ship_length)
+                        orientation, column, row = ship_input()
+                        if check_ship_fits(ship_length, row, column, orientation):
+                            if collision_check(self.board, row, column, orientation, ship_length) is False:
+                                if orientation == 'H':
+                                    for i in range(column, column + ship_length):
+                                        self.board[row][i] = 'X'
+                                else:
+                                    for i in range(row, row + ship_length):
+                                        self.board[i][column] = 'X'
+                                self.print_board()
+                                break
 
 
 def run_game():
@@ -199,6 +228,9 @@ def run_game():
     GameBoard.print_board(player_board)
     GameBoard.print_board(computer_board)
     GameBoard.place_ships(computer_board)
+    GameBoard.print_board(computer_board)
+    GameBoard.print_board(player_board)
+    GameBoard.place_ships(player_board)
 
 
 run_game()
