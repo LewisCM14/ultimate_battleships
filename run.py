@@ -1,13 +1,7 @@
-"""
-Libraries
-"""
+# Libraries
 
 import re
 import random
-
-# Converts the letters used for display to numbers for functional use.
-
-LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
 
 """
 Legend
@@ -59,96 +53,6 @@ def name_input():
     return player_name
 
 
-def check_ship_fits(ship_length, row, column, orientation):
-    """
-    Holds the logic to check if the placed ship fits.
-    """
-    if orientation == 'H':
-        if column + ship_length > 9:
-            print('SHIP DOES NOT FIT, TRY AGAIN!\n')
-            return False
-        else:
-            return True
-    else:
-        if row + ship_length > 9:
-            print('SHIP DOES NOT FIT, TRY AGAIN!\n')
-            return False
-        else:
-            return True
-
-
-def collision_check(board, row, column, orientation, ship_length):
-    """
-    Holds the logic to check for ship collisions upon placement.
-    """
-    if orientation == 'H':
-        for i in range(column, column + ship_length):
-            if board[row][i] == 'X':
-                print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
-                return True
-    else:
-        for i in range(row, row + ship_length):
-            if board[i][column] == 'X':
-                print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
-                return True
-    return False
-
-
-def ship_prompt(ship_length):
-    """
-    Prints out to the user which ship they are placing.
-    """
-    print('THE SAME POINT CANNOT BE USED TWICE, HORIZONTAL AND VERTICAL PLACEMENT ONLY')
-
-    if ship_length == 6:
-        print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
-    elif ship_length == 4:
-        print('PLEASE PLACE THE BATTLECRUISER (1x4)\n')
-    elif ship_length == 3:
-        print('PLEASE PLACE THE SUBMARINE (1x3)\n')
-    elif ship_length == 2:
-        print('PLEASE PLACE THE FRIGATE (1x2)\n')
-
-
-def ship_input():
-    """
-    Collects the users desired:
-    orientation, row, column.
-    Then used to place the ship on their board.
-    """
-    while True:
-        try:
-            orientation = input('ENTER ORIENTATION (H OR V): ').upper()
-            if orientation == 'H' or orientation == 'V':
-                break
-            else:
-                raise ValueError
-        except ValueError:
-            print('PLEASE ENTER A VALID ORIENTATION')
-    while True:
-        try:
-            input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
-            if input_column in 'ABCDEFGHIJ':
-                column = LETTERS_TO_NUMBERS[input_column]
-                break
-            else:
-                raise ValueError
-        except ValueError:
-            print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
-    while True:
-        try:
-            row = input('ENTER DESIRED ROW (0-9): ')
-            if row in '0123456789':
-                row = int(row)
-                break
-            else:
-                raise ValueError
-        except ValueError:
-            print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
-
-    return orientation, column, row
-
-
 class GameBoard:
     """
     Each board holds the respective players ships,
@@ -156,6 +60,10 @@ class GameBoard:
     The relevant board is populated with the opposing
     players guess, marked to indicate if it was a hit or miss.
     """
+
+    # Converts the letters used for display to numbers for functional use.
+
+    LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
 
     def __init__(self, name, score, user):
         self.board = [['~'] * 10 for x in range(10)]
@@ -176,6 +84,92 @@ class GameBoard:
             row_number += 1
         print(f'\nSCORE: {self.score}\n')
 
+    def check_ship_fits(self, ship_length, row, column, orientation):
+        """
+        Holds the logic to check if the placed ship fits.
+        """
+        if orientation == 'H':
+            if column + ship_length > 9:
+                print('SHIP DOES NOT FIT, TRY AGAIN!\n')
+                return False
+            else:
+                return True
+        else:
+            if row + ship_length > 9:
+                print('SHIP DOES NOT FIT, TRY AGAIN!\n')
+                return False
+            else:
+                return True
+
+    def collision_check(self, board, row, column, orientation, ship_length):
+        """
+        Holds the logic to check for ship collisions upon placement.
+        """
+        if orientation == 'H':
+            for i in range(column, column + ship_length):
+                if board[row][i] == 'X':
+                    print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
+                    return True
+        else:
+            for i in range(row, row + ship_length):
+                if board[i][column] == 'X':
+                    print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
+                    return True
+        return False
+
+    def ship_prompt(self, ship_length):
+        """
+        Prints out to the user which ship they are placing.
+        """
+        print('THE SAME POINT CANNOT BE USED TWICE, HORIZONTAL AND VERTICAL PLACEMENT ONLY')
+
+        if ship_length == 6:
+            print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
+        elif ship_length == 4:
+            print('PLEASE PLACE THE BATTLECRUISER (1x4)\n')
+        elif ship_length == 3:
+            print('PLEASE PLACE THE SUBMARINE (1x3)\n')
+        elif ship_length == 2:
+            print('PLEASE PLACE THE FRIGATE (1x2)\n')
+
+    def ship_input(self):
+        """
+        Collects the users desired:
+        orientation, row, column.
+        Then used to place the ship on their board.
+        """
+        while True:
+            try:
+                orientation = input('ENTER ORIENTATION (H OR V): ').upper()
+                if orientation == 'H' or orientation == 'V':
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print('PLEASE ENTER A VALID ORIENTATION')
+        while True:
+            try:
+                input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                if input_column in 'ABCDEFGHIJ':
+                    column = self.LETTERS_TO_NUMBERS[input_column]
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+        while True:
+            try:
+                row = input('ENTER DESIRED ROW (0-9): ')
+                if row in '0123456789':
+                    row = int(row)
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+
+        return orientation, column, row
+
     def place_ships(self):
         """
         Places the ships randomly on the computers board,
@@ -191,8 +185,8 @@ class GameBoard:
                     orientation = random.choice(['H', 'V'])
                     row = random.randint(0, 9)
                     column = random.randint(0, 9)
-                    if check_ship_fits(ship_length, row, column, orientation):
-                        if collision_check(self.board, row, column, orientation, ship_length) is False:
+                    if self.check_ship_fits(ship_length, row, column, orientation):
+                        if self.collision_check(self.board, row, column, orientation, ship_length) is False:
                             if orientation == 'H':
                                 for i in range(column, column + ship_length):
                                     self.board[row][i] = 'X'
@@ -202,10 +196,10 @@ class GameBoard:
                             break
                 else:
                     if self.user == 'player':
-                        ship_prompt(ship_length)
-                        orientation, column, row = ship_input()
-                        if check_ship_fits(ship_length, row, column, orientation):
-                            if collision_check(self.board, row, column, orientation, ship_length) is False:
+                        self.ship_prompt(ship_length)
+                        orientation, column, row = self.ship_input()
+                        if self.check_ship_fits(ship_length, row, column, orientation):
+                            if self.collision_check(self.board, row, column, orientation, ship_length) is False:
                                 if orientation == 'H':
                                     for i in range(column, column + ship_length):
                                         self.board[row][i] = 'X'
