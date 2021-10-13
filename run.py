@@ -22,7 +22,7 @@ def welcome_message():
     print('WELCOME TO BATTLESHIPS!')
     print('THE BOARD IS A GRID OF 10x10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
-    print('A TOTAL SCORE OF 15 IS REQUIRED TO WIN, 1 POINT PER HIT\n')
+    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT\n')
     print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
 
 
@@ -84,7 +84,7 @@ class GameBoard:
         for row in self.board:
             print('%d|%s ' % (row_number, ' '.join(row)))
             row_number += 1
-        print(f'\nLIVES: {self.lives}\n')
+        print(f'\nLIVES REMAINING: {self.lives}\n')
 
     def check_ship_fits(self, ship_length, row, column, orientation):
         """
@@ -239,7 +239,6 @@ class GameBoard:
                         input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
                         if input_column in 'ABCDEFGHIJ':
                             column = self.letters_to_numbers[input_column]
-                            print(column)  # test
                             break
                         else:
                             raise ValueError
@@ -247,14 +246,12 @@ class GameBoard:
                         print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
                 elif self.user == 'computer':
                     column = random.randint(0, 9)
-                    print(column)  # test
             while True:
                 if self.user == 'player':
                     try:
                         row = input('ENTER DESIRED ROW (0-9): ')
                         if row in '0123456789':
                             row = int(row)
-                            print(row)  # test
                             break
                         else:
                             raise ValueError
@@ -262,7 +259,6 @@ class GameBoard:
                         print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
                 elif self.user == 'computer':
                     row = random.randint(0, 9)
-                    print(row)  # test
             break  # might be in wrong place
         else:
             print('OUT OF LIVES')  # complete later
@@ -281,19 +277,31 @@ class GameBoard:
         return self.lives
 
 
-def run_game():
+def run_game(player_board, user_guess, computer_board, computer_guess):
+    print('Hello World')
+
+
+def new_game():
     """
     Starts a new game.
     """
     welcome_message()
     player_name = name_input()
+    
     player_board = GameBoard(player_name, 'player')
+    user_guess = GameBoard('GUESS', 'user guess')
     computer_board = GameBoard("COMPUTER's", 'computer')
-    player_board.print_board()
-    computer_board.print_board()
+    computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
+    
+    computer_board.print_board()  # test
     computer_board.place_ships()
-    computer_board.print_board()  # remove later
+    computer_board.print_board()  # test
+    
+    player_board.print_board()
     player_board.place_ships()
+    user_guess.print_board()
 
+    run_game(player_board, user_guess, computer_board, computer_guess)
+    
 
-run_game()
+new_game()
