@@ -314,6 +314,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             elif player_board.board[row][column] == 'X':
                 print('\nTHE COMPUTER HIT YOUR SHIP!\n')
                 computer_guess.board[row][column] = '+'
+                player_board.board[row][column] = '+'
                 computer_turn += 1
                 player_board.lives_counter()
                 player_board.print_board()
