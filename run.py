@@ -291,15 +291,15 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
         column, row = player_board.attack_input()
         
         if user_guess.board[row][column] == '-':
-            print('YOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
+            print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
             run_game(player_board, user_guess, computer_board, computer_guess)
        
         elif user_guess.board[row][column] == '+':
-            print('YOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
+            print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
             run_game(player_board, user_guess, computer_board, computer_guess)
         
         elif computer_board.board[row][column] == 'X':
-            print('CONGRATULATIONS, YOU HIT A SHIP!\n')
+            print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
             user_guess.board[row][column] = '+'
             player_turn += 1
             user_guess.lives_counter()
@@ -308,7 +308,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             user_guess.print_board()
         
         elif computer_board.board[row][column] == '~':
-            print('YOU MISSED!\n')
+            print('\nYOU MISSED!\n')
             user_guess.board[row][column] = '-'
             player_turn += 1
             player_board.print_board()
@@ -324,7 +324,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             run_game(player_board, user_guess, computer_board, computer_guess)
         
         elif player_board.board[row][column] == 'X':
-            print('THE COMPUTER HIT YOUR SHIP!\n')
+            print('\nTHE COMPUTER HIT YOUR SHIP!\n')
             computer_guess.board[row][column] = '+'
             computer_turn += 1
             player_board.lives_counter()
@@ -332,7 +332,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             player_board.print_board()
         
         elif player_board.board[row][column] == '~':
-            print('COMPUTER MISSED!\n')
+            print('\nCOMPUTER MISSED!\n')
             computer_guess.board[row][column] = '-'
             computer_turn += 1
 
