@@ -65,7 +65,7 @@ class GameBoard:
 
     # Converts letters for display purposes to numbers for functionailty
 
-    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
+    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,}
 
     def __init__(self, name, user):
         self.board = [['~'] * 10 for x in range(10)]
@@ -165,7 +165,7 @@ class GameBoard:
         while True:
             try:
                 input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
-                if input_column in 'ABCDEFGHIJ':
+                if input_column in 'ABCDEFGHIJ':  # when nothing entered causes KeyError
                     column = self.letters_to_numbers[input_column]
                     break
                 else:
@@ -278,7 +278,61 @@ class GameBoard:
 
 
 def run_game(player_board, user_guess, computer_board, computer_guess):
-    print('Hello World')
+    """
+    Runs until a player is out of lives.
+    """
+    player_turn = 0
+    computer_turn = 1
+
+    while player_turn < computer_turn:
+        user_guess.print_board()
+        row, column = player_board.attack_input()
+        
+        if user_guess.board[row][column] == '-':
+            print('YOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
+            run_game(player_board, user_guess, computer_board, computer_guess)
+       
+        elif user_guess.board[row][column] == '+':
+            print('YOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
+            run_game(player_board, user_guess, computer_board, computer_guess)
+        
+        elif computer_board.board[row][column] == 'X':
+            print('CONGRATULATIONS, YOU HIT A SHIP!\n')
+            user_guess.board[row][column] = '+'
+            player_turn += 1
+            user_guess.lives_counter()
+            computer_board.lives_counter()
+            player_board.print_board()
+            user_guess.print_board()
+        
+        elif computer_board.board[row][column] == '~':
+            print('YOU MISSED!\n')
+            user_guess.board[row][column] = '-'
+            player_turn += 1
+            player_board.print_board()
+            user_guess.print_board()
+    
+    while computer_turn == player_turn:
+        row, column = computer_board.attack_input()
+        
+        if computer_guess.board[row][column] == '-':
+            run_game(player_board, user_guess, computer_board, computer_guess)
+        
+        elif computer_guess.board[row][column] == '+':
+            run_game(player_board, user_guess, computer_board, computer_guess)
+        
+        elif player_board.board[row][column] == 'X':
+            print('THE COMPUTER HIT YOUR SHIP!\n')
+            computer_guess.board[row][column] = '+'
+            computer_turn += 1
+            player_board.lives_counter()
+            computer_guess.lives_counter()
+            player_board.print_board()
+        
+        elif player_board.board[row][column] == '~':
+            print('COMPUTER MISSED!\n')
+            computer_guess.board[row][column] = '-'
+            computer_turn += 1
 
 
 def new_game():
@@ -292,16 +346,15 @@ def new_game():
     user_guess = GameBoard('GUESS', 'user guess')
     computer_board = GameBoard("COMPUTER's", 'computer')
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
-    
+   
     computer_board.print_board()  # test
     computer_board.place_ships()
     computer_board.print_board()  # test
     
     player_board.print_board()
     player_board.place_ships()
-    user_guess.print_board()
 
     run_game(player_board, user_guess, computer_board, computer_guess)
-    
+
 
 new_game()
