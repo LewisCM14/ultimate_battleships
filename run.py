@@ -152,7 +152,6 @@ class GameBoard:
         orientation, row, column.
         Then used to place the ship on their board.
         """
-
         while True:
             try:
                 orientation = input('ENTER ORIENTATION (H OR V): ').upper()
@@ -231,40 +230,36 @@ class GameBoard:
         attack co-ordinates. Randomly generates
         the computers co-ordinates.
         """
-        if self.lives > 0:
-            while True:
-                if self.user == 'player':
-                    print("ITS YOUR TURN TO ATTACK!\n")
-                    try:
-                        input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
-                        if input_column in 'ABCDEFGHIJ':
-                            column = self.letters_to_numbers[input_column]
-                            break
-                        else:
-                            raise ValueError
-                    except ValueError:
-                        print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
-                elif self.user == 'computer':
-                    print("COMPUTER'S TURN TO ATTACK!")
-                    column = random.randint(0, 9)
-                    break
-            while True:
-                if self.user == 'player':
-                    try:
-                        row = input('ENTER DESIRED ROW (0-9): ')
-                        if row in '0123456789':
-                            row = int(row)
-                            break
-                        else:
-                            raise ValueError
-                    except ValueError:
-                        print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
-                elif self.user == 'computer':
-                    row = random.randint(0, 9)
-                    break
-        else:
-            print('OUT OF LIVES')  # complete later
-            return False
+        while True:
+            if self.user == 'player':
+                print("ITS YOUR TURN TO ATTACK!\n")
+                try:
+                    input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                    if input_column in 'ABCDEFGHIJ':
+                        column = self.letters_to_numbers[input_column]
+                        break
+                    else:
+                        raise ValueError
+                except ValueError:
+                    print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+            elif self.user == 'computer':
+                print("COMPUTER'S TURN TO ATTACK!")
+                column = random.randint(0, 9)
+                break
+        while True:
+            if self.user == 'player':
+                try:
+                    row = input('ENTER DESIRED ROW (0-9): ')
+                    if row in '0123456789':
+                        row = int(row)
+                        break
+                    else:
+                        raise ValueError
+                except ValueError:
+                    print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+            elif self.user == 'computer':
+                row = random.randint(0, 9)
+                break
 
         return column, row
 
@@ -273,10 +268,12 @@ class GameBoard:
         Updates the lives of the respective player,
         runs each time an attack is completed.
         """
+        count = 15
         for row in self.board:
             for column in row:
                 if column == '+':
-                    self.lives -= 1
+                    count -= 1
+                    self.lives = count
         return self.lives
 
 
@@ -302,7 +299,6 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 user_guess.board[row][column] = '+'
                 player_turn += 1
                 user_guess.lives_counter()
-                computer_board.lives_counter()
                 user_guess.print_board()
             elif computer_board.board[row][column] == '~':
                 print('\nYOU MISSED!\n')
