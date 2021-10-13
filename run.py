@@ -226,7 +226,43 @@ class GameBoard:
                                 break
 
     def attack_input(self):
-        pass
+        """
+        Allows the player to input their desired
+        attack co-ordinates. Randomly generates
+        the computers co-ordinates.
+        """
+        while self.lives > 0:
+            while True:
+                if self.user == 'player':
+                    print("ITS YOUR TURN TO ATTACK!\n")
+                    try:
+                        input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                        if input_column in 'ABCDEFGHIJ':
+                            column = self.letters_to_numbers[input_column]
+                            print(column)  # test
+                            break
+                        else:
+                            raise ValueError
+                    except ValueError:
+                        print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+                elif self.user == 'computer':
+                    pass
+            while True:
+                if self.user == 'player':
+                    try:
+                        row = input('ENTER DESIRED ROW (0-9): ')
+                        if row in '0123456789':
+                            row = int(row)
+                            print(row)  # test
+                            break
+                        else:
+                            raise ValueError
+                    except ValueError:
+                        print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+                elif self.user == 'computer':
+                    pass
+        
+        return column, row
 
 
 def run_game():
@@ -244,4 +280,8 @@ def run_game():
     player_board.place_ships()
 
 
-run_game()
+#  run_game()
+
+player_name = name_input()
+player_board = GameBoard(player_name, 'player')
+player_board.attack_input()
