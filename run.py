@@ -264,6 +264,7 @@ class GameBoard:
                     break
         else:
             print('OUT OF LIVES')  # complete later
+            return False
 
         return column, row
 
@@ -286,55 +287,44 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
     player_turn = 0
     computer_turn = 1
 
-    while player_turn < computer_turn:
-        user_guess.print_board()
-        column, row = player_board.attack_input()
-        
-        if user_guess.board[row][column] == '-':
-            print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
-            run_game(player_board, user_guess, computer_board, computer_guess)
-       
-        elif user_guess.board[row][column] == '+':
-            print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
-            run_game(player_board, user_guess, computer_board, computer_guess)
-        
-        elif computer_board.board[row][column] == 'X':
-            print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
-            user_guess.board[row][column] = '+'
-            player_turn += 1
-            user_guess.lives_counter()
-            computer_board.lives_counter()
-            player_board.print_board()
+    while True:
+        if player_turn < computer_turn:
             user_guess.print_board()
-        
-        elif computer_board.board[row][column] == '~':
-            print('\nYOU MISSED!\n')
-            user_guess.board[row][column] = '-'
-            player_turn += 1
-            player_board.print_board()
-            user_guess.print_board()
-    
-    while computer_turn == player_turn:
-        row, column = computer_board.attack_input()
-        
-        if computer_guess.board[row][column] == '-':
-            run_game(player_board, user_guess, computer_board, computer_guess)
-        
-        elif computer_guess.board[row][column] == '+':
-            run_game(player_board, user_guess, computer_board, computer_guess)
-        
-        elif player_board.board[row][column] == 'X':
-            print('\nTHE COMPUTER HIT YOUR SHIP!\n')
-            computer_guess.board[row][column] = '+'
-            computer_turn += 1
-            player_board.lives_counter()
-            computer_guess.lives_counter()
-            player_board.print_board()
-        
-        elif player_board.board[row][column] == '~':
-            print('\nCOMPUTER MISSED!\n')
-            computer_guess.board[row][column] = '-'
-            computer_turn += 1
+            column, row = player_board.attack_input()
+            if user_guess.board[row][column] == '-':
+                print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
+                run_game(player_board, user_guess, computer_board, computer_guess)
+            elif user_guess.board[row][column] == '+':
+                print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
+                run_game(player_board, user_guess, computer_board, computer_guess)
+            elif computer_board.board[row][column] == 'X':
+                print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
+                user_guess.board[row][column] = '+'
+                player_turn += 1
+                user_guess.lives_counter()
+                computer_board.lives_counter()
+                user_guess.print_board()
+            elif computer_board.board[row][column] == '~':
+                print('\nYOU MISSED!\n')
+                user_guess.board[row][column] = '-'
+                player_turn += 1
+                user_guess.print_board()
+        if computer_turn == player_turn:
+            row, column = computer_board.attack_input()
+            if computer_guess.board[row][column] == '-':
+                run_game(player_board, user_guess, computer_board, computer_guess)
+            elif computer_guess.board[row][column] == '+':
+                run_game(player_board, user_guess, computer_board, computer_guess)
+            elif player_board.board[row][column] == 'X':
+                print('\nTHE COMPUTER HIT YOUR SHIP!\n')
+                computer_guess.board[row][column] = '+'
+                computer_turn += 1
+                player_board.lives_counter()
+                player_board.print_board()
+            elif player_board.board[row][column] == '~':
+                print('\nCOMPUTER MISSED!\n')
+                computer_guess.board[row][column] = '-'
+                computer_turn += 1
 
 
 def new_game():
