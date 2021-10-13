@@ -249,14 +249,14 @@ class GameBoard:
             while True:
                 if self.user == 'player':
                     try:
-                        row = input('ENTER DESIRED ROW (0-9): ')
+                        row = input('ENTER DESIRED ROW (0-9): \n')
                         if row in '0123456789':
                             row = int(row)
                             break
                         else:
                             raise ValueError
                     except ValueError:
-                        print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+                        print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9\n')
                 elif self.user == 'computer':
                     row = random.randint(0, 9)
             break  # might be in wrong place
@@ -286,7 +286,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
 
     while player_turn < computer_turn:
         user_guess.print_board()
-        row, column = player_board.attack_input()
+        column, row = player_board.attack_input()
         
         if user_guess.board[row][column] == '-':
             print('YOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
