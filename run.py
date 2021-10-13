@@ -269,6 +269,17 @@ class GameBoard:
 
         return column, row
 
+    def lives_counter(self):
+        """
+        Updates the lives of the respective player,
+        runs each time an attack is completed.
+        """
+        for row in self.board:
+            for column in row:
+                if column == '+':
+                    self.lives -= 1
+        return self.lives
+
 
 def run_game():
     """
