@@ -266,7 +266,7 @@ class GameBoard:
     def lives_counter(self):
         """
         Updates the lives of the respective player,
-        runs each time an attack is completed.
+        runs each time a ship is hit.
         """
         count = 15
         for row in self.board:
@@ -274,8 +274,6 @@ class GameBoard:
                 if column == '+':
                     count -= 1
                     self.lives = count
-                    if count == 0:
-                        end_game()
         return self.lives
 
 
@@ -285,24 +283,30 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
     """
     player_turn = 0
     computer_turn = 1
+    player_lives = 15
+    computer_lives = 15
 
     while True:
         if player_turn < computer_turn:
-            user_guess.print_board()
             column, row = player_board.attack_input()
             if user_guess.board[row][column] == '-':
                 print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
-                run_game(player_board, user_guess, computer_board, computer_guess)
+                column, row = player_board.attack_input()
             elif user_guess.board[row][column] == '+':
                 print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
-                run_game(player_board, user_guess, computer_board, computer_guess)
+                column, row = player_board.attack_input()
             elif computer_board.board[row][column] == 'X':
                 print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
                 user_guess.board[row][column] = '+'
                 player_turn += 1
                 user_guess.lives_counter()
                 user_guess.print_board()
-            elif computer_board.board[row][column] == '~':
+                computer_lives -= 1
+                if computer_lives == 0:
+                    print('THE COMPUTER HAS NO LIVES LEFT!')
+                    print('YOU WIN!')
+                    break
+            else:
                 print('\nYOU MISSED!\n')
                 user_guess.board[row][column] = '-'
                 player_turn += 1
@@ -310,9 +314,9 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
         if computer_turn == player_turn:
             row, column = computer_board.attack_input()
             if computer_guess.board[row][column] == '-':
-                run_game(player_board, user_guess, computer_board, computer_guess)
+                row, column = computer_board.attack_input()
             elif computer_guess.board[row][column] == '+':
-                run_game(player_board, user_guess, computer_board, computer_guess)
+                row, column = computer_board.attack_input()
             elif player_board.board[row][column] == 'X':
                 print('\nTHE COMPUTER HIT YOUR SHIP!\n')
                 computer_guess.board[row][column] = '+'
@@ -320,15 +324,16 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 computer_turn += 1
                 player_board.lives_counter()
                 player_board.print_board()
-            elif player_board.board[row][column] == '~':
+                player_lives -= 1
+                if player_lives == 0:
+                    print('YOU HAVE NO LIVES LEFT!')
+                    print('YOU LOSE!')
+                    break
+            else:
                 print('\nCOMPUTER MISSED!\n')
                 computer_guess.board[row][column] = '-'
                 computer_turn += 1
                 player_board.print_board()
-
-
-def end_game():
-    pass
 
 
 def new_game():
@@ -343,12 +348,13 @@ def new_game():
     computer_board = GameBoard("COMPUTER's", 'computer')
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
    
-    computer_board.print_board()  # test
+    #  computer_board.print_board()  # test
     computer_board.place_ships()
-    computer_board.print_board()  # test
+    #  computer_board.print_board()  # test
     
     player_board.print_board()
     player_board.place_ships()
+    user_guess.print_board()
 
     run_game(player_board, user_guess, computer_board, computer_guess)
 
