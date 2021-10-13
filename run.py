@@ -63,10 +63,6 @@ class GameBoard:
     players guess, marked to indicate if it was a hit or miss.
     """
 
-    # Converts the letters used for display to numbers for functional use.
-
-    LETTERS_TO_NUMBERS = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
-
     def __init__(self, name, user):
         self.board = [['~'] * 10 for x in range(10)]
         self.score = 0
@@ -152,6 +148,9 @@ class GameBoard:
         orientation, row, column.
         Then used to place the ship on their board.
         """
+
+        letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
+
         while True:
             try:
                 orientation = input('ENTER ORIENTATION (H OR V): ').upper()
@@ -165,7 +164,7 @@ class GameBoard:
             try:
                 input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
                 if input_column in 'ABCDEFGHIJ':
-                    column = self.LETTERS_TO_NUMBERS[input_column]
+                    column = letters_to_numbers[input_column]
                     break
                 else:
                     raise ValueError
@@ -236,6 +235,7 @@ def run_game():
     player_board.print_board()
     computer_board.print_board()
     computer_board.place_ships()
+    computer_board.print_board() # remove later
     player_board.place_ships()
 
 
