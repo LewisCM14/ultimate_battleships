@@ -65,7 +65,7 @@ class GameBoard:
 
     # Converts letters for display purposes to numbers for functionailty
 
-    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,}
+    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
 
     def __init__(self, name, user):
         self.board = [['~'] * 10 for x in range(10)]
@@ -231,7 +231,7 @@ class GameBoard:
         attack co-ordinates. Randomly generates
         the computers co-ordinates.
         """
-        while self.lives > 0:
+        if self.lives > 0:
             while True:
                 if self.user == 'player':
                     print("ITS YOUR TURN TO ATTACK!\n")
@@ -245,21 +245,23 @@ class GameBoard:
                     except ValueError:
                         print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
                 elif self.user == 'computer':
+                    print("COMPUTER'S TURN TO ATTACK!")
                     column = random.randint(0, 9)
+                    break
             while True:
                 if self.user == 'player':
                     try:
-                        row = input('ENTER DESIRED ROW (0-9): \n')
+                        row = input('ENTER DESIRED ROW (0-9): ')
                         if row in '0123456789':
                             row = int(row)
                             break
                         else:
                             raise ValueError
                     except ValueError:
-                        print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9\n')
+                        print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
                 elif self.user == 'computer':
                     row = random.randint(0, 9)
-            break  # might be in wrong place
+                    break
         else:
             print('OUT OF LIVES')  # complete later
 
