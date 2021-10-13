@@ -246,7 +246,8 @@ class GameBoard:
                     except ValueError:
                         print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
                 elif self.user == 'computer':
-                    pass
+                    column = random.randint(0, 9)
+                    print(column)  # test
             while True:
                 if self.user == 'player':
                     try:
@@ -260,8 +261,12 @@ class GameBoard:
                     except ValueError:
                         print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
                 elif self.user == 'computer':
-                    pass
-        
+                    row = random.randint(0, 9)
+                    print(row)  # test
+            break  # might be in wrong place
+        else:
+            print('OUT OF LIVES')  # complete later
+
         return column, row
 
 
@@ -280,8 +285,4 @@ def run_game():
     player_board.place_ships()
 
 
-#  run_game()
-
-player_name = name_input()
-player_board = GameBoard(player_name, 'player')
-player_board.attack_input()
+run_game()
