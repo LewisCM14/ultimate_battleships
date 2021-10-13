@@ -274,6 +274,8 @@ class GameBoard:
                 if column == '+':
                     count -= 1
                     self.lives = count
+                    if count == 0:
+                        end_game()
         return self.lives
 
 
@@ -322,6 +324,11 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 print('\nCOMPUTER MISSED!\n')
                 computer_guess.board[row][column] = '-'
                 computer_turn += 1
+                player_board.print_board()
+
+
+def end_game():
+    pass
 
 
 def new_game():
