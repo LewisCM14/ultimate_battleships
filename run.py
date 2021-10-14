@@ -1,16 +1,17 @@
 """
-Libraries
+Ultimate Battleships
 """
 
+# Libraires
 import re
 import random
-
 
 # Legend
 # ~ = co-ordiante doesn't hold ship/hasn't been guessed
 # X = co-ordinate holds a ship
 # + = co-ordinate holds a ship that has been attacked
 # - = co-ordinate that was gussesd and resulted in miss
+
 
 def welcome_message():
     """
@@ -64,7 +65,6 @@ class GameBoard:
     """
 
     # Converts letters for display purposes to numbers for functionailty
-
     letters_to_numbers = {
         'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
         'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9
@@ -316,7 +316,6 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
     computer_turn = 1  # Computer can only go once player score is equal
 
     # Life counter decrements each time a ship is hit
-
     player_lives = 15
     computer_lives = 15
 
