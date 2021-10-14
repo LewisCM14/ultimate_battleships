@@ -374,19 +374,36 @@ def new_game():
     """
     Starts a new game.
     """
+    # Prints the welcome message to the terminal
     welcome_message()
+    # Gets the players name
     player_name = name_input()
+    # Creates the players game board
     player_board = GameBoard(player_name, 'player')
+    # Creates the players guess board
     user_guess = GameBoard('GUESS', 'user guess')
+    # Creates the computers board
     computer_board = GameBoard("COMPUTER's", 'computer')
+    # Creates the computers guess board
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
-    computer_board.print_board()  # test
+    # Randomly places the computers ships on their board
     computer_board.place_ships()
-    computer_board.print_board()  # test
+    # Prints the players board to the terminal for reference
     player_board.print_board()
+    # Allows the player to place their ships
     player_board.place_ships()
+    # Prints the players guess board to terminal for reference
     user_guess.print_board()
+    # Takes turns attacking until winner
     run_game(player_board, user_guess, computer_board, computer_guess)
+    # Asks the player if they want to play again or quit
+    play_again()
+
+
+def play_again():
+    """
+    Asks the player if they want to play again or quit
+    """
 
 
 new_game()
