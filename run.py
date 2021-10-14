@@ -21,7 +21,6 @@ def welcome_message():
     print('THE BOARD IS A GRID OF 10x10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
     print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT\n')
-    print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
 
 
 def validate_team_name(name):
@@ -47,6 +46,7 @@ def name_input():
     Collects the user name input,
     allows it to be placed in a variable to be used later.
     """
+    print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
     while True:
         player_name = input('PLEASE ENTER A TEAM NAME:\n')
         if validate_team_name(player_name):
