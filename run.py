@@ -330,7 +330,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
     while True:
         if player_turn < computer_turn:
             column, row = player_board.attack_input()
-            if user_guess.board[row][column] == '-':
+            if user_guess.board[row][column] == GUESSED:
                 print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
             elif user_guess.board[row][column] == HITSHIP:
                 print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
@@ -348,13 +348,14 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                     break
             else:
                 print('\nYOU MISSED!\n')
-                user_guess.board[row][column] = '-'
+                user_guess.board[row][column] = GUESSED
                 player_turn += 1
                 user_guess.print_board()
                 print("COMPUTER'S TURN TO ATTACK!")
         if computer_turn == player_turn:
+            computer_guess.print_board()  # delete later
             row, column = computer_board.attack_input()
-            if computer_guess.board[row][column] == '-':
+            if computer_guess.board[row][column] == GUESSED:
                 pass
             elif computer_guess.board[row][column] == HITSHIP:
                 pass
@@ -372,7 +373,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                     break
             else:
                 print('\nCOMPUTER MISSED!\n')
-                computer_guess.board[row][column] = '-'
+                computer_guess.board[row][column] = GUESSED
                 computer_turn += 1
                 player_board.print_board()
 
