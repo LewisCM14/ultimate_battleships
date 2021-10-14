@@ -79,7 +79,7 @@ class GameBoard:
         }
 
     def __init__(self, name, user):
-        self.board = [['~'] * 10 for x in range(10)]
+        self.board = [[EMPTY] * 10 for x in range(10)]
         self.lives = 15
         self.name = name
         self.user = user
