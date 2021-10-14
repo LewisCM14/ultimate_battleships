@@ -261,11 +261,9 @@ class GameBoard:
             if self.user == 'player':
                 print("ITS YOUR TURN TO ATTACK!\n")
                 try:
-                    input_column = input(
-                        'ENTER DESIRED COLUMN (A-J): '
-                    ).upper()
-                    if input_column in 'ABCDEFGHIJ':
-                        column = self.letters_to_numbers[input_column]
+                    column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                    if column in 'ABCDEFGHIJ':
+                        column = self.letters_to_numbers[column]
                         break
                     else:
                         raise ValueError
