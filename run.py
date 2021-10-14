@@ -264,13 +264,13 @@ class GameBoard:
                 print("ITS YOUR TURN TO ATTACK!\n")
                 try:
                     column = input('ENTER DESIRED COLUMN (A-J): ').upper()
-                    if column in 'ABCDEFGHIJ':
+                    if not re.match('^[A-J]*$', column):
+                        print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+                    else:
                         column = self.letters_to_numbers[column]
                         break
-                    else:
-                        raise ValueError
-                except ValueError:
-                    print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+                except KeyError:
+                    print('PLEASE ENTER A LETTER')
             elif self.user == 'computer':
                 column = random.randint(0, 9)
                 break
