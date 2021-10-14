@@ -172,14 +172,14 @@ class GameBoard:
                 print('PLEASE ENTER A VALID ORIENTATION')
         while True:
             try:
-                input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
-                if input_column in 'ABCDEFGHIJ':  # when nothing entered causes KeyError
-                    column = self.letters_to_numbers[input_column]
-                    break
+                column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                if not re.match('^[A-J]*$', column):
+                    print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
                 else:
-                    raise ValueError
-            except ValueError:
-                print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+                    column = self.letters_to_numbers[column]
+                    break
+            except KeyError:
+                print('PLEASE ENTER A LETTER')
         while True:
             try:
                 row = input('ENTER DESIRED ROW (0-9): ')
