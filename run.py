@@ -5,14 +5,12 @@ Libraries
 import re
 import random
 
-"""
-Legend
-~ = co-ordiante doesn't hold ship/hasn't been guessed
-X = co-ordinate holds a ship
-+ = co-ordinate holds a ship that has been attacked
-- = co-ordinate that was gussesd and resulted in miss
-"""
 
+# Legend
+# ~ = co-ordiante doesn't hold ship/hasn't been guessed
+# X = co-ordinate holds a ship
+# + = co-ordinate holds a ship that has been attacked
+# - = co-ordinate that was gussesd and resulted in miss
 
 def welcome_message():
     """
@@ -65,7 +63,10 @@ class GameBoard:
 
     # Converts letters for display purposes to numbers for functionailty
 
-    letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9}
+    letters_to_numbers = {
+        'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
+        'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9
+        }
 
     def __init__(self, name, user):
         self.board = [['~'] * 10 for x in range(10)]
@@ -121,7 +122,8 @@ class GameBoard:
             for i in range(column, column + ship_length):
                 if board[row][i] == 'X':
                     if self.user == 'player':
-                        print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
+                        print('\nA SHIP IS ALREADY WITHIN THESE CO-ORDINATES.')
+                        print('TRY AGAIN!\n')
                         return True
                     else:
                         return True
@@ -129,7 +131,8 @@ class GameBoard:
             for i in range(row, row + ship_length):
                 if board[i][column] == 'X':
                     if self.user == 'player':
-                        print('YOU HAVE ALREADY PLACED A SHIP IN THESE CO-ORDINATES, TRY AGAIN!\n')
+                        print('\nA SHIP IS ALREADY WITHIN THESE CO-ORDINATES.')
+                        print('TRY AGAIN!\n')
                         return True
                     else:
                         return True
@@ -140,7 +143,8 @@ class GameBoard:
         Prints out to the user which ship they are placing.
         Informs them of ship dimensions to aide placement.
         """
-        print('THE SAME POINT CANNOT BE USED TWICE, HORIZONTAL AND VERTICAL PLACEMENT ONLY')
+        print('THE SAME POINT CANNOT BE USED TWICE!')
+        print('HORIZONTAL AND VERTICAL PLACEMENT ONLY.')
 
         if ship_length == 6:
             print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
@@ -196,7 +200,9 @@ class GameBoard:
         Also  runs the logic to check
         the ship fits with no collisions.
         """
-        length_of_ships = [6, 4, 3, 2]  # An array that holds the ships to then be looped through
+
+        # An array that holds the ships to then be looped through
+        length_of_ships = [6, 4, 3, 2]
 
         for ship_length in length_of_ships:
 
@@ -205,8 +211,12 @@ class GameBoard:
                     orientation = random.choice(['H', 'V'])
                     row = random.randint(0, 9)
                     column = random.randint(0, 9)
-                    if self.check_ship_fits(ship_length, row, column, orientation):
-                        if self.collision_check(self.board, row, column, orientation, ship_length) is False:
+                    if self.check_ship_fits(
+                        ship_length, row, column, orientation
+                    ):
+                        if self.collision_check(
+                            self.board, row, column, orientation, ship_length
+                        ) is False:
                             if orientation == 'H':
                                 for i in range(column, column + ship_length):
                                     self.board[row][i] = 'X'
@@ -218,10 +228,20 @@ class GameBoard:
                     if self.user == 'player':
                         self.ship_prompt(ship_length)
                         orientation, column, row = self.ship_input()
-                        if self.check_ship_fits(ship_length, row, column, orientation):
-                            if self.collision_check(self.board, row, column, orientation, ship_length) is False:
+                        if self.check_ship_fits(
+                            ship_length, row, column, orientation
+                        ):
+                            if self.collision_check(
+                                self.board,
+                                row,
+                                column,
+                                orientation,
+                                ship_length
+                                    ) is False:
                                 if orientation == 'H':
-                                    for i in range(column, column + ship_length):
+                                    for i in range(
+                                        column, column + ship_length
+                                    ):
                                         self.board[row][i] = 'X'
                                 else:
                                     for i in range(row, row + ship_length):
@@ -241,7 +261,9 @@ class GameBoard:
             if self.user == 'player':
                 print("ITS YOUR TURN TO ATTACK!\n")
                 try:
-                    input_column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                    input_column = input(
+                        'ENTER DESIRED COLUMN (A-J): '
+                    ).upper()
                     if input_column in 'ABCDEFGHIJ':
                         column = self.letters_to_numbers[input_column]
                         break
