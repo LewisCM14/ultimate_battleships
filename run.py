@@ -6,11 +6,19 @@ Ultimate Battleships
 import re
 import random
 
-# Legend
-# ~ = co-ordiante doesn't hold ship/hasn't been guessed
-# X = co-ordinate holds a ship
-# + = co-ordinate holds a ship that has been attacked
-# - = co-ordinate that was gussesd and resulted in miss
+# Legend, Allows board display to be updated with ease
+
+EMPTY = '~'
+# Co-ordiante doesn't hold ship/hasn't been guessed
+
+SHIP = 'X'
+# Co-ordinate holds a ship
+
+HITSHIP = '+'
+# Co-ordinate holds a ship that has been attacked
+
+GUESSED = '-'
+# Co-ordinate that was gussesd and resulted in miss
 
 
 def welcome_message():
