@@ -270,7 +270,6 @@ class GameBoard:
                 except ValueError:
                     print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
             elif self.user == 'computer':
-            #    print("COMPUTER'S TURN TO ATTACK!")
                 column = random.randint(0, 9)
                 break
         while True:
@@ -324,10 +323,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             column, row = player_board.attack_input()
             if user_guess.board[row][column] == '-':
                 print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
-            #    column, row = player_board.attack_input()
             elif user_guess.board[row][column] == '+':
                 print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
-            #    column, row = player_board.attack_input()
             elif computer_board.board[row][column] == 'X':
                 print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
                 user_guess.board[row][column] = '+'
@@ -350,10 +347,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             row, column = computer_board.attack_input()
             if computer_guess.board[row][column] == '-':
                 pass
-            #    row, column = computer_board.attack_input()
             elif computer_guess.board[row][column] == '+':
                 pass
-            #    row, column = computer_board.attack_input()
             elif player_board.board[row][column] == 'X':
                 print('\nTHE COMPUTER HIT YOUR SHIP!\n')
                 computer_guess.board[row][column] = '+'
@@ -388,7 +383,7 @@ def new_game():
     computer_board.print_board()  # test
     player_board.print_board()
     player_board.place_ships()
-    #  user_guess.print_board()
+    user_guess.print_board()
     run_game(player_board, user_guess, computer_board, computer_guess)
 
 
