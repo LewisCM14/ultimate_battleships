@@ -307,7 +307,7 @@ class GameBoard:
         count = 15
         for row in self.board:
             for column in row:
-                if column == '+':
+                if column == HITSHIP:
                     count -= 1
                     self.lives = count
         return self.lives
@@ -332,11 +332,11 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             column, row = player_board.attack_input()
             if user_guess.board[row][column] == '-':
                 print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
-            elif user_guess.board[row][column] == '+':
+            elif user_guess.board[row][column] == HITSHIP:
                 print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
             elif computer_board.board[row][column] == SHIP:
                 print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
-                user_guess.board[row][column] = '+'
+                user_guess.board[row][column] = HITSHIP
                 player_turn += 1
                 user_guess.lives_counter()
                 user_guess.print_board()
@@ -356,12 +356,12 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             row, column = computer_board.attack_input()
             if computer_guess.board[row][column] == '-':
                 pass
-            elif computer_guess.board[row][column] == '+':
+            elif computer_guess.board[row][column] == HITSHIP:
                 pass
             elif player_board.board[row][column] == SHIP:
                 print('\nTHE COMPUTER HIT YOUR SHIP!\n')
-                computer_guess.board[row][column] = '+'
-                player_board.board[row][column] = '+'
+                computer_guess.board[row][column] = HITSHIP
+                player_board.board[row][column] = HITSHIP
                 computer_turn += 1
                 player_board.lives_counter()
                 player_board.print_board()
@@ -412,6 +412,7 @@ def new_game():
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
     # Randomly places the computers ships on their board
     computer_board.place_ships()
+    computer_board.print_board()  # delete later
     # Prints the players board to the terminal for reference
     player_board.print_board()
     # Allows the player to place their ships
