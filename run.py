@@ -370,6 +370,23 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 player_board.print_board()
 
 
+def play_again():
+    """
+    Asks the player if they want to play again or quit
+    """
+    print('WOULD YOU LIKE TO PLAY AGAIN?')
+    answer = input('ENTER Y OR N: ').upper()
+    while True:
+        if answer == "Y":
+            new_game()
+        elif answer == "N":
+            print('GOODBYE!')
+            return False
+        else:
+            print('PLEASE ENTER Y OR N')
+            answer = input('ENTER Y OR N: ').upper()
+
+
 def new_game():
     """
     Starts a new game.
@@ -400,23 +417,4 @@ def new_game():
     play_again()
 
 
-def play_again():
-    """
-    Asks the player if they want to play again or quit
-    """
-    print('WOULD YOU LIKE TO PLAY AGAIN?')
-    answer = input('ENTER Y OR N: ').upper()
-    while True:
-        if answer == "Y":
-            new_game()
-        elif answer == "N":
-            print('GOODBYE!')
-            return False
-        else:
-            print('PLEASE ENTER Y OR N')
-            answer = input('ENTER Y OR N: ').upper()
-
-
-#  new_game()
-
-play_again()
+new_game()
