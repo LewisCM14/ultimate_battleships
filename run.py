@@ -7,7 +7,7 @@ import random
 
 """
 Legend
-~ = co-ordiante doesn't hold ship/ hasn't been guessed
+~ = co-ordiante doesn't hold ship/hasn't been guessed
 X = co-ordinate holds a ship
 + = co-ordinate holds a ship that has been attacked
 - = co-ordinate that was gussesd and resulted in miss
@@ -29,7 +29,7 @@ def welcome_message():
 def validate_team_name(name):
     """
     Validates the input name is letters, numbers and underscores only.
-    Ensures no longer than 10 characters.
+    Also ensures no longer than 10 characters.
     """
 
     if not re.match('^[A-Za-z0-9_]*$', name):
@@ -45,7 +45,7 @@ def validate_team_name(name):
 def name_input():
     """
     Collects the user name input,
-    places it in a variable to use later.
+    allows it to be placed in a variable to be used later.
     """
     while True:
         player_name = input('PLEASE ENTER A TEAM NAME:\n')
@@ -76,6 +76,8 @@ class GameBoard:
     def print_board(self):
         """
          Prints the required board to the terminal.
+         Ensures the board also holds the correct supporting
+         information.
         """
         print(f'{self.name} BOARD:\n')
         print('  A B C D E F G H I J ')
@@ -89,6 +91,7 @@ class GameBoard:
     def check_ship_fits(self, ship_length, row, column, orientation):
         """
         Holds the logic to check if the placed ship fits.
+        Forces the used to enter new co-ordinates if fails.
         """
         if orientation == 'H':
             if column + ship_length > 9:
@@ -112,6 +115,7 @@ class GameBoard:
     def collision_check(self, board, row, column, orientation, ship_length):
         """
         Holds the logic to check for ship collisions upon placement.
+        Forces the used to enter new co-ordinates if fails.
         """
         if orientation == 'H':
             for i in range(column, column + ship_length):
@@ -134,6 +138,7 @@ class GameBoard:
     def ship_prompt(self, ship_length):
         """
         Prints out to the user which ship they are placing.
+        Informs them of ship dimensions to aide placement.
         """
         print('THE SAME POINT CANNOT BE USED TWICE, HORIZONTAL AND VERTICAL PLACEMENT ONLY')
 
@@ -188,9 +193,10 @@ class GameBoard:
         """
         Places the ships randomly on the computers board,
         allows for the player to place their own ships.
-        Also Checks the ship fits with no collisions.
+        Also  runs the logic to check
+        the ship fits with no collisions.
         """
-        length_of_ships = [6, 4, 3, 2]
+        length_of_ships = [6, 4, 3, 2]  # An array that holds the ships to then be looped through
 
         for ship_length in length_of_ships:
 
@@ -229,6 +235,7 @@ class GameBoard:
         Allows the player to input their desired
         attack co-ordinates. Randomly generates
         the computers co-ordinates.
+        Co-ordinates are then returned to be used in gameplay.
         """
         while True:
             if self.user == 'player':
@@ -279,10 +286,16 @@ class GameBoard:
 
 def run_game(player_board, user_guess, computer_board, computer_guess):
     """
-    Runs until a player is out of lives.
+    Loops until a player is out of lives.
+    Ensures a valid attack input is used, provides
+    user feedback. Makes used of a turn and life counter
+    to determine who goes next and when game ends.
     """
-    player_turn = 0
-    computer_turn = 1
+    player_turn = 0  # Ensures player goes first
+    computer_turn = 1  # Computer can only go once player score is equal
+
+    # Life counter decrements each time a ship is hit
+
     player_lives = 15
     computer_lives = 15
 
@@ -342,20 +355,16 @@ def new_game():
     """
     welcome_message()
     player_name = name_input()
-    
     player_board = GameBoard(player_name, 'player')
     user_guess = GameBoard('GUESS', 'user guess')
     computer_board = GameBoard("COMPUTER's", 'computer')
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
-   
-    #  computer_board.print_board()  # test
+    computer_board.print_board()  # test
     computer_board.place_ships()
-    #  computer_board.print_board()  # test
-    
+    computer_board.print_board()  # test
     player_board.print_board()
     player_board.place_ships()
     user_guess.print_board()
-
     run_game(player_board, user_guess, computer_board, computer_guess)
 
 
