@@ -404,6 +404,19 @@ def play_again():
     """
     Asks the player if they want to play again or quit
     """
+    print('WOULD YOU LIKE TO PLAY AGAIN?')
+    answer = input('ENTER Y OR N: ').upper()
+    while True:
+        if answer == "Y":
+            new_game()
+        elif answer == "N":
+            print('GOODBYE!')
+            return False
+        else:
+            print('PLEASE ENTER Y OR N')
+            answer = input('ENTER Y OR N: ').upper()
 
 
-new_game()
+#  new_game()
+
+play_again()
