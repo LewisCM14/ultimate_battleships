@@ -36,6 +36,8 @@ def validate_team_name(name):
     elif len(name) > 10:
         print('INVALID NAME. 10 CHARACTERS MAX')
         return False
+    elif len(name) == 0:
+        print('INVALID NAME. NOT LONG ENOUGH')
     else:
         return True
 
