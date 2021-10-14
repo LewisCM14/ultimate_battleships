@@ -26,10 +26,14 @@ def welcome_message():
     Holds the print statments used in the welcome message,
     displayed each time a new game begins.
     """
-    print('WELCOME TO BATTLESHIPS!')
+    print('WELCOME TO ULTIMATE BATTLESHIPS!\n')
     print('THE BOARD IS A GRID OF 10x10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
-    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT\n')
+    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT')
+    print(f'{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASNT BEEN GUESSED')
+    print(f'{SHIP} REPRESENTS A SHIP')
+    print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
+    print(f'{GUESSED} IS FOR A CO-ORDINATE THAT HAS BEEN GUESSED\n')
 
 
 def validate_team_name(name):
