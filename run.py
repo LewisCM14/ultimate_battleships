@@ -130,7 +130,7 @@ class GameBoard:
         """
         if orientation == 'H':
             for i in range(column, column + ship_length):
-                if board[row][i] == 'X':
+                if board[row][i] == SHIP:
                     if self.user == 'player':
                         print('\nA SHIP IS ALREADY WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN!\n')
@@ -139,7 +139,7 @@ class GameBoard:
                         return True
         else:
             for i in range(row, row + ship_length):
-                if board[i][column] == 'X':
+                if board[i][column] == SHIP:
                     if self.user == 'player':
                         print('\nA SHIP IS ALREADY WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN!\n')
@@ -229,10 +229,10 @@ class GameBoard:
                         ) is False:
                             if orientation == 'H':
                                 for i in range(column, column + ship_length):
-                                    self.board[row][i] = 'X'
+                                    self.board[row][i] = SHIP
                             else:
                                 for i in range(row, row + ship_length):
-                                    self.board[i][column] = 'X'
+                                    self.board[i][column] = SHIP
                             break
                 else:
                     if self.user == 'player':
@@ -252,10 +252,10 @@ class GameBoard:
                                     for i in range(
                                         column, column + ship_length
                                     ):
-                                        self.board[row][i] = 'X'
+                                        self.board[row][i] = SHIP
                                 else:
                                     for i in range(row, row + ship_length):
-                                        self.board[i][column] = 'X'
+                                        self.board[i][column] = SHIP
                                 print(' ')
                                 self.print_board()
                                 break
@@ -334,7 +334,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
             elif user_guess.board[row][column] == '+':
                 print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
-            elif computer_board.board[row][column] == 'X':
+            elif computer_board.board[row][column] == SHIP:
                 print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
                 user_guess.board[row][column] = '+'
                 player_turn += 1
@@ -358,7 +358,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 pass
             elif computer_guess.board[row][column] == '+':
                 pass
-            elif player_board.board[row][column] == 'X':
+            elif player_board.board[row][column] == SHIP:
                 print('\nTHE COMPUTER HIT YOUR SHIP!\n')
                 computer_guess.board[row][column] = '+'
                 player_board.board[row][column] = '+'
