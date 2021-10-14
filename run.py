@@ -353,7 +353,6 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 user_guess.print_board()
                 print("COMPUTER'S TURN TO ATTACK!")
         if computer_turn == player_turn:
-            computer_guess.print_board()  # delete later
             row, column = computer_board.attack_input()
             if computer_guess.board[row][column] == GUESSED:
                 pass
@@ -413,7 +412,6 @@ def new_game():
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
     # Randomly places the computers ships on their board
     computer_board.place_ships()
-    computer_board.print_board()  # delete later
     # Prints the players board to the terminal for reference
     player_board.print_board()
     # Allows the player to place their ships
