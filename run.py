@@ -338,9 +338,10 @@ class GameBoard:
                     print('PLEASE ENTER A LETTER')
             elif self.user == 'computer guess':
                 column = self.comp_attack_column()
-                if column == range(0, 10): #  if no co-ord can be picked game breaks
+                if column == range(0, 10):  # if no co-ord can be picked game breaks
                     break
                 else:
+                    column = random.randint(0, 9)
                     break
                     # Break means attack_input go again until column in range
         while True:
@@ -356,9 +357,10 @@ class GameBoard:
                     print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
             elif self.user == 'computer guess':
                 row = self.comp_attack_row()
-                if row == range(0, 10): #  if no co-ord can be picked game breaks
+                if row == range(0, 10):  # if no co-ord can be picked game breaks
                     break
                 else:
+                    row = random.randint(0, 9)
                     break
                     # Break means attack_input go again until row in range
         return column, row
