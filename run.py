@@ -449,6 +449,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 player_board.print_board()
                 computer_guess.column_arry.append(10)  # adjust later, doesnt allow for four adjacent co-ords on hitship to be targetted
                 computer_guess.row_arry.append(10)  # adjust later, doesnt allow for four adjacent co-ords on hitship to be targetted
+                # will need to add 1 to attk arry here
+                # run check miss count function here
 
 
 def play_again():
@@ -506,4 +508,34 @@ def new_game():
     play_again()
 
 
-new_game()
+#  new_game()
+
+
+attk_arry = [1, 1, 1, 1]  # each time comp miss add a 1 to arry else add 2
+
+
+def check_miss_count(attk_arry):  # will need be self
+    """
+    Returns the last four values of attk_arry.
+    If total equal to 4, force random column & row,
+    Else, allow AI to carry on running.
+    """
+    first = attk_arry[-1] # these will need to be self.attk_arry
+    second = attk_arry[-2]
+    third = attk_arry[-3]
+    fourth = attk_arry[-4]
+
+    sum_of_attk = first + second + third + fourth
+    if sum_of_attk == 4:
+        print('column and row arry need 10 adding')
+        # self.column_arry.append(10)
+        # self.row_arry.append(10)
+        # adding ten will force computer to attack randomly on next go
+    else:
+        print('nothing needs to happen, maybe use pass')
+        # pass
+        # doing nothing here will mean column/row arry keep value from last hit in
+        # computer should attack the four adjacent co-ords before moving on
+
+
+check_miss_count(attk_arry)
