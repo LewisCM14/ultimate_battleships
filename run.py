@@ -44,7 +44,6 @@ def validate_team_name(name):
     Validates the input name is letters, numbers and underscores only.
     Also ensures no longer than 10 characters.
     """
-
     if not re.match('^[A-Za-z0-9_]*$', name):
         print('INVALID NAME. LETTERS, NUMBERS AND UNDERSCORES ONLY')
         return False
@@ -80,7 +79,6 @@ class GameBoard:
     The relevant board is populated with the opposing
     players guess, marked to indicate if it was a hit or miss.
     """
-
     # Converts letters for display purposes to numbers for functionailty
     letters_to_numbers = {
         'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
@@ -219,7 +217,6 @@ class GameBoard:
         Also  runs the logic to check
         the ship fits with no collisions.
         """
-
         # An array that holds the ships to then be looped through
         length_of_ships = [6, 4, 3, 2]
 
@@ -449,4 +446,46 @@ def new_game():
     play_again()
 
 
-new_game()
+#  new_game()
+
+column_arry = [9]  # arry needs to be in class later
+
+
+def random_int():  # will go in class, should need self
+    """
+    Returns a random int between 1 and 2.
+    Int is then used to decide computers attack.
+    """
+    attk_random = random.randint(1, 2)
+    print('this is attack random')  # test
+    print(attk_random)  # test
+    return attk_random
+
+
+def comp_attack_column(column_arry):  # will be self later
+    """
+    Holds the logic for computers attack.
+    Returns a value for the column based
+    off last hit ship on comp_guess board.
+    """
+    column_hit = column_arry[-1]  # adjust to self
+    if column_hit == 10:
+        column = random.randint(0, 9)
+        print('this is column if arry 10')  # test
+        print(column)  # test
+        return column
+    else:
+        attk_random = random_int()
+        if attk_random == 1:
+            column = column_hit + 1
+            print('this is column for plus 1')  # test
+            print(column)  # test
+            return column
+        elif attk_random == 2:
+            column = column_hit - 1
+            print('this is column for minus 1')  # test
+            print(column)  # test
+            return column
+
+
+comp_attack_column(column_arry)
