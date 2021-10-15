@@ -185,7 +185,7 @@ class GameBoard:
         """
         while True:
             try:
-                orientation = input('ENTER ORIENTATION (H OR V): ').upper()
+                orientation = input('ENTER ORIENTATION (H OR V): \n').upper()
                 if orientation == 'H' or orientation == 'V':
                     break
                 else:
@@ -194,7 +194,7 @@ class GameBoard:
                 print('PLEASE ENTER A VALID ORIENTATION')
         while True:
             try:
-                column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                column = input('ENTER DESIRED COLUMN (A-J): \n').upper()
                 if not re.match('^[A-J]*$', column):
                     print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
                 else:
@@ -204,7 +204,7 @@ class GameBoard:
                 print('PLEASE ENTER A LETTER')
         while True:
             try:
-                row = input('ENTER DESIRED ROW (0-9): ')
+                row = input('ENTER DESIRED ROW (0-9): \n')
                 if row in '0123456789':
                     row = int(row)
                     break
@@ -328,7 +328,7 @@ class GameBoard:
             if self.user == 'player':
                 print("ITS YOUR TURN TO ATTACK!\n")
                 try:
-                    column = input('ENTER DESIRED COLUMN (A-J): ').upper()
+                    column = input('ENTER DESIRED COLUMN (A-J): \n').upper()
                     if not re.match('^[A-J]*$', column):
                         print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
                     else:
@@ -346,7 +346,7 @@ class GameBoard:
         while True:
             if self.user == 'player':
                 try:
-                    row = input('ENTER DESIRED ROW (0-9): ')
+                    row = input('ENTER DESIRED ROW (0-9): \n')
                     if row in '0123456789':
                         row = int(row)
                         break
@@ -476,7 +476,7 @@ def play_again():
     Asks the player if they want to play again or quit
     """
     print('\nWOULD YOU LIKE TO PLAY AGAIN?')
-    answer = input('ENTER Y OR N: ').upper()
+    answer = input('ENTER Y OR N: \n').upper()
     print(' ')
     while True:
         if answer == "Y":
@@ -491,7 +491,7 @@ def play_again():
         else:
             print(' ')
             print('PLEASE ENTER Y OR N')
-            answer = input('ENTER Y OR N: ').upper()
+            answer = input('ENTER Y OR N: \n').upper()
 
 
 def new_game():
