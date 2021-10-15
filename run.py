@@ -6,7 +6,7 @@ Ultimate Battleships
 import re
 import random
 
-# Legend, Allows board display to be updated with ease
+# Legend, Allows the game display to be updated with ease
 
 EMPTY = '─'
 # Co-ordiante doesn't hold ship/hasn't been guessed
@@ -19,6 +19,9 @@ HITSHIP = 'X'
 
 GUESSED = 'O'
 # Co-ordinate that was gussesd and resulted in miss
+
+PHASE = '░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░'
+# Used to seperate the differnt phases of the game
 
 
 def welcome_message():
@@ -65,6 +68,8 @@ def name_input():
         if validate_team_name(player_name):
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
+    print(PHASE)
+    print(' ')
     return player_name
 
 
@@ -339,6 +344,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             elif user_guess.board[row][column] == HITSHIP:
                 print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
             elif computer_board.board[row][column] == SHIP:
+                print(' ')
+                print(PHASE)
                 print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
                 user_guess.board[row][column] = HITSHIP
                 player_turn += 1
@@ -347,10 +354,14 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 computer_lives -= 1
                 print("COMPUTER'S TURN TO ATTACK!")
                 if computer_lives == 0:
-                    print('THE COMPUTER HAS NO LIVES LEFT!')
+                    print('\nTHE COMPUTER HAS NO LIVES LEFT!')
                     print('YOU WIN!')
+                    print(' ')
+                    print(PHASE)
                     break
             else:
+                print(' ')
+                print(PHASE)
                 print('\nYOU MISSED!\n')
                 user_guess.board[row][column] = GUESSED
                 player_turn += 1
@@ -363,7 +374,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
             elif computer_guess.board[row][column] == HITSHIP:
                 pass
             elif player_board.board[row][column] == SHIP:
-                print('\nTHE COMPUTER HIT YOUR SHIP!\n')
+                print('THE COMPUTER HIT YOUR SHIP!\n')
                 computer_guess.board[row][column] = HITSHIP
                 player_board.board[row][column] = HITSHIP
                 computer_turn += 1
@@ -371,11 +382,13 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 player_board.print_board()
                 player_lives -= 1
                 if player_lives == 0:
-                    print('YOU HAVE NO LIVES LEFT!')
+                    print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
+                    print(' ')
+                    print(PHASE)
                     break
             else:
-                print('\nCOMPUTER MISSED!\n')
+                print('COMPUTER MISSED!\n')
                 computer_guess.board[row][column] = GUESSED
                 computer_turn += 1
                 player_board.print_board()
@@ -385,15 +398,21 @@ def play_again():
     """
     Asks the player if they want to play again or quit
     """
-    print('WOULD YOU LIKE TO PLAY AGAIN?')
+    print('\nWOULD YOU LIKE TO PLAY AGAIN?')
     answer = input('ENTER Y OR N: ').upper()
+    print(' ')
     while True:
         if answer == "Y":
+            print(PHASE)
             new_game()
         elif answer == "N":
+            print(' ')
             print('GOODBYE!')
+            print(' ')
+            print(PHASE)
             return False
         else:
+            print(' ')
             print('PLEASE ENTER Y OR N')
             answer = input('ENTER Y OR N: ').upper()
 
@@ -421,6 +440,8 @@ def new_game():
     # Allows the player to place their ships
     player_board.place_ships()
     # Prints the players guess board to terminal for reference
+    print(PHASE)
+    print(' ')
     user_guess.print_board()
     # Takes turns attacking until winner
     run_game(player_board, user_guess, computer_board, computer_guess)
