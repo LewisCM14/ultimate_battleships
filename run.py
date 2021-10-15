@@ -93,6 +93,7 @@ class GameBoard:
         # Both start at 10 as outside board size, forces random
         self.column_arry = [10]
         self.row_arry = [10]
+        self.attk_arry = [1, 1, 1, 1]
 
     def print_board(self):
         """
@@ -374,6 +375,24 @@ class GameBoard:
                     self.lives = count
         return self.lives
 
+    def check_miss_count(self):
+        """
+        Returns the last four values of attk_arry.
+        If total equal to 4, force random column & row,
+        Else, allow AI to carry on running.
+        """
+        first = self.attk_arry[-1]
+        second = self.attk_arry[-2]
+        third = self.attk_arry[-3]
+        fourth = self.attk_arry[-4]
+        sum_of_attk = first + second + third + fourth
+
+        if sum_of_attk == 4:
+            self.column_arry.append(10)
+            self.row_arry.append(10)
+        else:
+            pass
+
 
 def run_game(player_board, user_guess, computer_board, computer_guess):
     """
@@ -447,10 +466,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 computer_guess.board[row][column] = GUESSED
                 computer_turn += 1
                 player_board.print_board()
-                computer_guess.column_arry.append(10)  # adjust later, doesnt allow for four adjacent co-ords on hitship to be targetted
-                computer_guess.row_arry.append(10)  # adjust later, doesnt allow for four adjacent co-ords on hitship to be targetted
-                # will need to add 1 to attk arry here
-                # run check miss count function here
+                computer_guess.attk_arry.append(1)
+                computer_guess.check_miss_count()
 
 
 def play_again():
@@ -508,10 +525,7 @@ def new_game():
     play_again()
 
 
-#  new_game()
-
-
-attk_arry = [1, 1, 1, 1]  # each time comp miss add a 1 to arry else add 2
+new_game()
 
 
 def check_miss_count(attk_arry):  # will need be self
@@ -528,6 +542,7 @@ def check_miss_count(attk_arry):  # will need be self
     sum_of_attk = first + second + third + fourth
     if sum_of_attk == 4:
         print('column and row arry need 10 adding')
+        row_arry.append(10)
         # self.column_arry.append(10)
         # self.row_arry.append(10)
         # adding ten will force computer to attack randomly on next go
@@ -539,3 +554,4 @@ def check_miss_count(attk_arry):  # will need be self
 
 
 check_miss_count(attk_arry)
+print(row_arry)
