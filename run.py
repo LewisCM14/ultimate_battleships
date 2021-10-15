@@ -448,6 +448,8 @@ def new_game():
 
 #  new_game()
 
+#  run_game will need to add row and column to arrys when hit ship
+
 column_arry = [9]  # arry needs to be in class later
 
 
@@ -488,4 +490,35 @@ def comp_attack_column(column_arry):  # will be self later
             return column
 
 
-comp_attack_column(column_arry)
+#  comp_attack_column(column_arry)
+
+row_arry = [9]  # arry needs to be in class later
+
+
+def comp_attack_row(row_arry):  # will be self later
+    """
+    Holds the logic for computers attack.
+    Returns a value for the row based
+    off last hit ship on comp_guess board.
+    """
+    row_hit = row_arry[-1]  # adjust to self
+    if row_hit == 10:
+        row = random.randint(0, 9)
+        print('this is row if arry 10')  # test
+        print(row)  # test
+        return row
+    else:
+        attk_random = random_int()
+        if attk_random == 1:
+            row = row_hit + 1
+            print('this is row for plus 1')  # test
+            print(row)  # test
+            return row
+        elif attk_random == 2:
+            row = row_hit - 1
+            print('this is row for minus 1')  # test
+            print(row)  # test
+            return row
+
+
+comp_attack_row(row_arry)
