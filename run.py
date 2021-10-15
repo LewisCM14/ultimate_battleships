@@ -204,7 +204,7 @@ class GameBoard:
                 print('PLEASE ENTER A LETTER')
         while True:
             try:
-                row = input('ENTER DESIRED ROW (0-9): \n')
+                row = input('ENTER DESIRED ROW (0-9): \n')  # if 12 entered causes indexerror
                 if row in '0123456789':
                     row = int(row)
                     break
@@ -338,7 +338,7 @@ class GameBoard:
                     print('PLEASE ENTER A LETTER')
             elif self.user == 'computer guess':
                 column = self.comp_attack_column()
-                if column == range(0, 10):
+                if column == range(0, 10): #  if no co-ord can be picked game breaks
                     break
                 else:
                     break
@@ -346,7 +346,7 @@ class GameBoard:
         while True:
             if self.user == 'player':
                 try:
-                    row = input('ENTER DESIRED ROW (0-9): \n')
+                    row = input('ENTER DESIRED ROW (0-9): \n')  # if number bigger than 9 breaks
                     if row in '0123456789':
                         row = int(row)
                         break
@@ -356,7 +356,7 @@ class GameBoard:
                     print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
             elif self.user == 'computer guess':
                 row = self.comp_attack_row()
-                if row == range(0, 10):
+                if row == range(0, 10): #  if no co-ord can be picked game breaks
                     break
                 else:
                     break
@@ -450,14 +450,13 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 print('THE COMPUTER HIT YOUR SHIP!\n')
                 computer_turn += 1
                 player_lives -= 1
-                print(column)
-                print(row)
                 computer_guess.column_arry.append(column)
                 computer_guess.row_arry.append(row)
                 computer_guess.board[row][column] = HITSHIP
                 player_board.board[row][column] = HITSHIP
                 player_board.lives_counter()
                 player_board.print_board()
+                computer_guess.attk_arry.append(0)
                 if player_lives == 0:
                     print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
