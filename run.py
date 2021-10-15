@@ -90,8 +90,9 @@ class GameBoard:
         self.lives = 15
         self.name = name
         self.user = user
-        self.column_arry = [10]  # Starts at 10 as outside of board size
-        self.row_arry = [10]  # Starts at 10 as outside of board size
+        # Both start at 10 as outside board size, forces random
+        self.column_arry = [10]
+        self.row_arry = [10]
 
     def print_board(self):
         """
@@ -274,8 +275,6 @@ class GameBoard:
         Int is then used to decide computers attack.
         """
         attk_random = random.randint(1, 2)
-        print('this is attack random')  # test
-        print(attk_random)  # test
         return attk_random
 
     def comp_attack_column(self):
@@ -287,20 +286,14 @@ class GameBoard:
         column_hit = self.column_arry[-1]
         if column_hit == 10:
             column = random.randint(0, 9)
-            print('this is column if arry 10')  # test
-            print(column)  # test
             return column
         else:
             attk_random = self.random_attk_int()
             if attk_random == 1:
                 column = column_hit + 1
-                print('this is column for plus 1')  # test
-                print(column)  # test
                 return column
             elif attk_random == 2:
                 column = column_hit - 1
-                print('this is column for minus 1')  # test
-                print(column)  # test
                 return column
 
     def comp_attack_row(self):
@@ -312,27 +305,21 @@ class GameBoard:
         row_hit = self.row_arry[-1]
         if row_hit == 10:
             row = random.randint(0, 9)
-            print('this is row if arry 10')  # test
-            print(row)  # test
             return row
         else:
             attk_random = self.random_attk_int()
             if attk_random == 1:
                 row = row_hit + 1
-                print('this is row for plus 1')  # test
-                print(row)  # test
                 return row
             elif attk_random == 2:
                 row = row_hit - 1
-                print('this is row for minus 1')  # test
-                print(row)  # test
                 return row
 
     def attack_input(self):
         """
         Allows the player to input their desired
-        attack co-ordinates. Randomly generates
-        the computers co-ordinates.
+        attack co-ordinates. Uses the comp AI methods
+        to decide computers attack co-ordinates.
         Co-ordinates are then returned to be used in gameplay.
         """
         while True:
@@ -349,10 +336,11 @@ class GameBoard:
                     print('PLEASE ENTER A LETTER')
             elif self.user == 'computer guess':
                 column = self.comp_attack_column()
-                if column == range(1, 10):
+                if column == range(0, 10):
                     break
                 else:
                     break
+                    # Break means attack_input go again until column in range
         while True:
             if self.user == 'player':
                 try:
@@ -366,10 +354,11 @@ class GameBoard:
                     print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
             elif self.user == 'computer guess':
                 row = self.comp_attack_row()
-                if row == range(1, 10):
+                if row == range(0, 10):
                     break
                 else:
                     break
+                    # Break means attack_input go again until row in range
         return column, row
 
     def lives_counter(self):
@@ -445,9 +434,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 player_board.lives_counter()
                 player_board.print_board()
                 player_lives -= 1
-                computer_guess.column_arry.append(column)  # added, ensure works
-                computer_guess.row_arry.append(row)  # added, ensure works
-                computer_guess.print_board()  # delete later
+                computer_guess.column_arry.append(column)
+                computer_guess.row_arry.append(row)
                 if player_lives == 0:
                     print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
@@ -461,7 +449,6 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 player_board.print_board()
                 computer_guess.column_arry.append(10)  # adjust later, doesnt allow for four adjacent co-ords on hitship to be targetted
                 computer_guess.row_arry.append(10)  # adjust later, doesnt allow for four adjacent co-ords on hitship to be targetted
-                computer_guess.print_board()  # delete later
 
 
 def play_again():
@@ -520,81 +507,3 @@ def new_game():
 
 
 new_game()
-
-#  run_game will need to add row and column to arrys when hit ship
-
-column_arry = [10]  # arry needs to be in class later
-
-
-def random_int():  # will go in class, should need self
-    """
-    Returns a random int between 1 and 2.
-    Int is then used to decide computers attack.
-    """
-    attk_random = random.randint(1, 2)
-    print('this is attack random')  # test
-    print(attk_random)  # test
-    return attk_random
-
-
-def comp_attack_column(column_arry):  # will be self later
-    """
-    Holds the logic for computers attack.
-    Returns a value for the column based
-    off last hit ship on comp_guess board.
-    """
-    column_hit = column_arry[-1]  # adjust to self
-    while True:
-        if column_hit == 10:
-            column = random.randint(0, 9)
-            print('this is column if arry 10')  # test
-            print(column)  # test
-            return False
-        else:
-            attk_random = random_int()
-            if attk_random == 1:
-                column = column_hit + 1
-                if column > 9:
-                    return True
-                else:
-                    return False
-            elif attk_random == 2:
-                column = column_hit - 1
-                if column < 0:
-                    return True
-                else:
-                    return False
-        return column
-
-#  comp_attack_column(column_arry)
-
-row_arry = [9]  # arry needs to be in class later
-
-
-def comp_attack_row(row_arry):  # will be self later
-    """
-    Holds the logic for computers attack.
-    Returns a value for the row based
-    off last hit ship on comp_guess board.
-    """
-    row_hit = row_arry[-1]  # adjust to self
-    if row_hit == 10:
-        row = random.randint(0, 9)
-        print('this is row if arry 10')  # test
-        print(row)  # test
-        return row
-    else:
-        attk_random = random_int()
-        if attk_random == 1:
-            row = row_hit + 1
-            print('this is row for plus 1')  # test
-            print(row)  # test
-            return row
-        elif attk_random == 2:
-            row = row_hit - 1
-            print('this is row for minus 1')  # test
-            print(row)  # test
-            return row
-
-
-#  comp_attack_row(row_arry)
