@@ -93,6 +93,7 @@ class GameBoard:
         # Both start at 10 as outside board size, forces random
         self.column_arry = [10]
         self.row_arry = [10]
+        # Must start with four values of 1 to allow random attack
         self.attk_arry = [1, 1, 1, 1]
 
     def print_board(self):
