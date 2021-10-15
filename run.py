@@ -448,14 +448,16 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 pass
             elif player_board.board[row][column] == SHIP:
                 print('THE COMPUTER HIT YOUR SHIP!\n')
-                computer_guess.board[row][column] = HITSHIP
-                player_board.board[row][column] = HITSHIP
                 computer_turn += 1
-                player_board.lives_counter()
-                player_board.print_board()
                 player_lives -= 1
+                print(column)
+                print(row)
                 computer_guess.column_arry.append(column)
                 computer_guess.row_arry.append(row)
+                computer_guess.board[row][column] = HITSHIP
+                player_board.board[row][column] = HITSHIP
+                player_board.lives_counter()
+                player_board.print_board()
                 if player_lives == 0:
                     print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
