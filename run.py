@@ -8,16 +8,16 @@ import random
 
 # Legend, Allows board display to be updated with ease
 
-EMPTY = '~'
+EMPTY = '─'
 # Co-ordiante doesn't hold ship/hasn't been guessed
 
-SHIP = 'X'
+SHIP = '■'
 # Co-ordinate holds a ship
 
-HITSHIP = '+'
+HITSHIP = 'X'
 # Co-ordinate holds a ship that has been attacked
 
-GUESSED = '-'
+GUESSED = 'O'
 # Co-ordinate that was gussesd and resulted in miss
 
 
@@ -26,10 +26,10 @@ def welcome_message():
     Holds the print statments used in the welcome message,
     displayed each time a new game begins.
     """
-    print('WELCOME TO ULTIMATE BATTLESHIPS!\n')
+    print('\nWELCOME TO ULTIMATE BATTLESHIPS!\n')
     print('THE BOARD IS A GRID OF 10x10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
-    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT')
+    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT\n')
     print(f'{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASNT BEEN GUESSED')
     print(f'{SHIP} REPRESENTS A SHIP')
     print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
