@@ -399,7 +399,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
     """
     Loops until a player is out of lives.
     Ensures a valid attack input is used, provides
-    user feedback. Makes used of a turn and life counter
+    user feedback. Makes use of a turn and life counter
     to determine who goes next and when game ends.
     """
     player_turn = 0  # Ensures player goes first
