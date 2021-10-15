@@ -526,32 +526,3 @@ def new_game():
 
 
 new_game()
-
-
-def check_miss_count(attk_arry):  # will need be self
-    """
-    Returns the last four values of attk_arry.
-    If total equal to 4, force random column & row,
-    Else, allow AI to carry on running.
-    """
-    first = attk_arry[-1] # these will need to be self.attk_arry
-    second = attk_arry[-2]
-    third = attk_arry[-3]
-    fourth = attk_arry[-4]
-
-    sum_of_attk = first + second + third + fourth
-    if sum_of_attk == 4:
-        print('column and row arry need 10 adding')
-        row_arry.append(10)
-        # self.column_arry.append(10)
-        # self.row_arry.append(10)
-        # adding ten will force computer to attack randomly on next go
-    else:
-        print('nothing needs to happen, maybe use pass')
-        # pass
-        # doing nothing here will mean column/row arry keep value from last hit in
-        # computer should attack the four adjacent co-ords before moving on
-
-
-check_miss_count(attk_arry)
-print(row_arry)
