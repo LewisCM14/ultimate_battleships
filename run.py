@@ -79,11 +79,15 @@ class GameBoard:
     The relevant board is populated with the opposing
     players guess, marked to indicate if it was a hit or miss.
     """
+
     # Converts letters for display purposes to numbers for functionailty
     letters_to_numbers = {
         'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
         'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9
         }
+
+    # Valid row input
+    row_input = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
 
     def __init__(self, name, user):
         self.board = [[EMPTY] * 10 for x in range(10)]
@@ -203,15 +207,14 @@ class GameBoard:
                 print('PLEASE ENTER A LETTER')
         while True:
             try:
-                row = input('ENTER DESIRED ROW (0-9): \n')  # if 12 entered causes indexerror
-                if row in '0123456789':
+                row = input('ENTER DESIRED ROW (0-9): \n')
+                if row in self.row_input:
                     row = int(row)
                     break
                 else:
                     raise ValueError
             except ValueError:
                 print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
-
         return orientation, column, row
 
     def place_ships(self):
@@ -225,7 +228,6 @@ class GameBoard:
         length_of_ships = [6, 4, 3, 2]
 
         for ship_length in length_of_ships:
-
             while True:
                 if self.user == 'computer':
                     orientation = random.choice(['H', 'V'])
@@ -345,8 +347,8 @@ class GameBoard:
         while True:
             if self.user == 'player':
                 try:
-                    row = input('ENTER DESIRED ROW (0-9): \n')  # if number bigger than 9 breaks
-                    if row in '0123456789':
+                    row = input('ENTER DESIRED ROW (0-9): \n')
+                    if row in self.row_input:
                         row = int(row)
                         break
                     else:
@@ -360,7 +362,6 @@ class GameBoard:
                 else:
                     row = random.randint(0, 9)  # Room for improvment
                     break
-
         return column, row
 
     def lives_counter(self):
