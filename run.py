@@ -3,20 +3,20 @@ Ultimate Battleships
 """
 
 # Libraires
+
 import re
 import random
 
 # Legend, Allows the game display to be updated with ease
-
 EMPTY = '─'
+
 # Co-ordiante doesn't hold ship/hasn't been guessed
-
 SHIP = '■'
+
 # Co-ordinate holds a ship
-
 HITSHIP = 'X'
-# Co-ordinate holds a ship that has been attacked
 
+# Co-ordinate holds a ship that has been attacked
 GUESSED = 'O'
 # Co-ordinate that was gussesd and resulted in miss
 
@@ -167,7 +167,6 @@ class GameBoard:
         """
         print('THE SAME POINT CANNOT BE USED TWICE!')
         print('HORIZONTAL AND VERTICAL PLACEMENT ONLY.')
-
         if ship_length == 6:
             print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
         elif ship_length == 4:
@@ -338,12 +337,11 @@ class GameBoard:
                     print('PLEASE ENTER A LETTER')
             elif self.user == 'computer guess':
                 column = self.comp_attack_column()
-                if column == range(0, 10):  # if no co-ord can be picked game breaks
+                if column == range(0, 10):
                     break
                 else:
-                    column = random.randint(0, 9)
+                    column = random.randint(0, 9)  # Room for improvment
                     break
-                    # Break means attack_input go again until column in range
         while True:
             if self.user == 'player':
                 try:
@@ -357,12 +355,12 @@ class GameBoard:
                     print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
             elif self.user == 'computer guess':
                 row = self.comp_attack_row()
-                if row == range(0, 10):  # if no co-ord can be picked game breaks
+                if row == range(0, 10):
                     break
                 else:
-                    row = random.randint(0, 9)
+                    row = random.randint(0, 9)  # Room for improvment
                     break
-                    # Break means attack_input go again until row in range
+
         return column, row
 
     def lives_counter(self):
@@ -389,8 +387,7 @@ class GameBoard:
         third = self.attk_arry[-3]
         fourth = self.attk_arry[-4]
         sum_of_attk = first + second + third + fourth
-
-        if sum_of_attk == 4:
+        if sum_of_attk == 8:
             self.column_arry.append(10)
             self.row_arry.append(10)
         else:
@@ -406,11 +403,9 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
     """
     player_turn = 0  # Ensures player goes first
     computer_turn = 1  # Computer can only go once player score is equal
-
     # Life counter decrements each time a ship is hit
     player_lives = 15
     computer_lives = 15
-
     while True:
         if player_turn < computer_turn:
             column, row = player_board.attack_input()
@@ -452,6 +447,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 print('THE COMPUTER HIT YOUR SHIP!\n')
                 computer_turn += 1
                 player_lives -= 1
+                print(column)
+                print(row)
                 computer_guess.column_arry.append(column)
                 computer_guess.row_arry.append(row)
                 computer_guess.board[row][column] = HITSHIP
