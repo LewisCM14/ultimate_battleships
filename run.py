@@ -397,7 +397,7 @@ class GameBoard:
             pass
 
 
-def run_game(player_board, user_guess, computer_board, computer_guess):  # Make guess board print when player turn to attack
+def run_game(player_board, user_guess, computer_board, computer_guess):
     """
     Loops until a player is out of lives.
     Ensures a valid attack input is used, provides
@@ -427,7 +427,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 user_guess.print_board()
                 computer_lives -= 1
                 print("COMPUTER'S TURN TO ATTACK!")
-                time.sleep(2)
+                time.sleep(3)
                 if computer_lives == 0:
                     print('\nTHE COMPUTER HAS NO LIVES LEFT!')
                     print('YOU WIN!')
@@ -442,7 +442,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 player_turn += 1
                 user_guess.print_board()
                 print("COMPUTER'S TURN TO ATTACK!")
-                time.sleep(2)
+                time.sleep(3)
         if computer_turn == player_turn:
             row, column = computer_guess.attack_input()
             if computer_guess.board[row][column] == GUESSED:
@@ -453,8 +453,6 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 print('THE COMPUTER HIT YOUR SHIP!\n')
                 computer_turn += 1
                 player_lives -= 1
-                print(column)
-                print(row)
                 computer_guess.column_arry.append(column)
                 computer_guess.row_arry.append(row)
                 computer_guess.board[row][column] = HITSHIP
@@ -462,7 +460,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 player_board.lives_counter()
                 player_board.print_board()
                 computer_guess.attk_arry.append(0)
-                time.sleep(2)
+                time.sleep(3)
                 if player_lives == 0:
                     print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
@@ -476,7 +474,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 player_board.print_board()
                 computer_guess.attk_arry.append(1)
                 computer_guess.check_miss_count()
-                time.sleep(2)
+                time.sleep(3)
 
 
 def play_again():
