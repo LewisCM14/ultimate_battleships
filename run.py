@@ -522,6 +522,7 @@ def new_game():
     player_board.print_board()
     # Allows the player to place their ships
     player_board.place_ships()
+    time.sleep(2)
     # Prints the players guess board to terminal for reference
     print(PHASE)
     print(' ')
