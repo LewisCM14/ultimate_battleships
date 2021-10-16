@@ -10,30 +10,30 @@ import random
 # Legend, Allows the game display to be updated with ease
 EMPTY = '─'
 
-# Co-ordiante doesn't hold ship/hasn't been guessed
+# Coordinate doesn't hold ship/hasn't been guessed
 SHIP = '■'
 
-# Co-ordinate holds a ship
+# Coordinate holds a ship
 HITSHIP = 'X'
 
-# Co-ordinate holds a ship that has been attacked
+# Coordinate holds a ship that has been attacked
 GUESSED = 'O'
-# Co-ordinate that was gussesd and resulted in miss
+# Coordinate that was guessed and resulted in miss
 
 PHASE = '░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░'
-# Used to seperate the differnt phases of the game
+# Used to separate the different phases of the game
 
 
 def welcome_message():
     """
-    Holds the print statments used in the welcome message,
+    Holds the print statement used in the welcome message,
     displayed each time a new game begins.
     """
     print('\nWELCOME TO ULTIMATE BATTLESHIPS!\n')
     print('THE BOARD IS A GRID OF 10x10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
     print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 PER HIT\n')
-    print(f'{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASNT BEEN GUESSED')
+    print(f"{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASN'T BEEN GUESSED")
     print(f'{SHIP} REPRESENTS A SHIP')
     print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
     print(f'{GUESSED} IS FOR A CO-ORDINATE THAT HAS BEEN GUESSED\n')
@@ -80,7 +80,7 @@ class GameBoard:
     players guess, marked to indicate if it was a hit or miss.
     """
 
-    # Converts letters for display purposes to numbers for functionailty
+    # Converts letters for display purposes to numbers for functionality
     letters_to_numbers = {
         'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
         'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9
@@ -342,7 +342,7 @@ class GameBoard:
                 if column == range(0, 10):
                     break
                 else:
-                    column = random.randint(0, 9)  # Room for improvment
+                    column = random.randint(0, 9)  # Room for improvement
                     break
         while True:
             if self.user == 'player':
@@ -360,7 +360,7 @@ class GameBoard:
                 if row == range(0, 10):
                     break
                 else:
-                    row = random.randint(0, 9)  # Room for improvment
+                    row = random.randint(0, 9)  # Room for improvement
                     break
         return column, row
 
@@ -395,7 +395,7 @@ class GameBoard:
             pass
 
 
-def run_game(player_board, user_guess, computer_board, computer_guess):
+def run_game(player_board, user_guess, computer_board, computer_guess):  # Add sleep to hit/miss for display in terminal
     """
     Loops until a player is out of lives.
     Ensures a valid attack input is used, provides
