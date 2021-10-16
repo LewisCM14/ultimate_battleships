@@ -69,6 +69,7 @@ def name_input():
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
     print(PHASE)
+    time.sleep(2)
     print(' ')
     return player_name
 
