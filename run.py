@@ -69,7 +69,7 @@ def name_input():
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
     print(PHASE)
-    time.sleep(2)
+    time.sleep(1)
     print(' ')
     return player_name
 
@@ -426,7 +426,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 user_guess.print_board()
                 computer_lives -= 1
                 print("COMPUTER'S TURN TO ATTACK!")
-                time.sleep(3)
+                time.sleep(2)
                 if computer_lives == 0:
                     print('\nTHE COMPUTER HAS NO LIVES LEFT!')
                     print('YOU WIN!')
@@ -441,7 +441,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 player_turn += 1
                 user_guess.print_board()
                 print("COMPUTER'S TURN TO ATTACK!")
-                time.sleep(3)
+                time.sleep(2)
         if computer_turn == player_turn:
             row, column = computer_guess.attack_input()
             if computer_guess.board[row][column] == GUESSED:
@@ -461,7 +461,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 player_board.lives_counter()
                 player_board.print_board()
                 computer_guess.attk_arry.append(0)
-                time.sleep(3)
+                time.sleep(2)
                 if player_lives == 0:
                     print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
@@ -475,7 +475,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
                 player_board.print_board()
                 computer_guess.attk_arry.append(1)
                 computer_guess.check_miss_count()
-                time.sleep(3)
+                time.sleep(2)
 
 
 def play_again():
