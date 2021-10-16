@@ -123,7 +123,7 @@ class GameBoard:
         Forces the used to enter new co-ordinates if fails.
         """
         if orientation == 'H':
-            if column + ship_length > 9:
+            if column + ship_length > 10:
                 if self.user == 'player':
                     print('SHIP DOES NOT FIT, TRY AGAIN!\n')
                     return False
@@ -132,7 +132,7 @@ class GameBoard:
             else:
                 return True
         else:
-            if row + ship_length > 9:
+            if row + ship_length > 10:
                 if self.user == 'player':
                     print('SHIP DOES NOT FIT, TRY AGAIN!\n')
                     return False
