@@ -344,7 +344,7 @@ class GameBoard:
                 if column == range(0, 10):
                     break
                 else:
-                    column = random.randint(0, 9)  # Room for improvement
+                    column = random.randint(0, 9)
                     break
         while True:
             if self.user == 'player':
@@ -362,7 +362,7 @@ class GameBoard:
                 if row == range(0, 10):
                     break
                 else:
-                    row = random.randint(0, 9)  # Room for improvement
+                    row = random.randint(0, 9)
                     break
         return column, row
 
@@ -526,7 +526,6 @@ def new_game():
     # Prints the players guess board to terminal for reference
     print(PHASE)
     print(' ')
-    # user_guess.print_board()
     # Takes turns attacking until winner
     run_game(player_board, user_guess, computer_board, computer_guess)
     # Asks the player if they want to play again or quit
