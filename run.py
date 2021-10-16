@@ -411,6 +411,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):  # Make 
     computer_lives = 15
     while True:
         if player_turn < computer_turn:
+            user_guess.print_board()
             column, row = player_board.attack_input()
             if user_guess.board[row][column] == GUESSED:
                 print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
@@ -526,7 +527,7 @@ def new_game():
     # Prints the players guess board to terminal for reference
     print(PHASE)
     print(' ')
-    user_guess.print_board()
+    # user_guess.print_board()
     # Takes turns attacking until winner
     run_game(player_board, user_guess, computer_board, computer_guess)
     # Asks the player if they want to play again or quit
