@@ -53,7 +53,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 - **Research**
 
-    **
+    *My research for the project consisted of browsing other developers battleship game based creations. With the intent of learning the common problems faced and the display choices they made.*
 
 [Return to Table of Contents](#contents)
 
@@ -61,26 +61,21 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 - **Colour Scheme**
 
-    **
-
-    1. 
-    2. 
-    3. 
-    4. 
-
-![color palette image]()
+    *Not required for the scope of this project.*
 
 - **Typography**
 
-    **
+    *I chose to capitalize all text on the project to create consistency in size throughout.*
 
 - **Imagery**
 
-    ** 
+    *Special attention to the board display during game play was required to ensure for suitable contrast between the different markers. [The Ascii Code](https://theasciicode.com.ar/) website was used to explore my options regarding ASCII characters. I implemented the use of a functional legend late on in the project to allow for easy testing of this.*
+
+    ![legend image](/assets/images/legend.png) 
 
 - **Layout**
 
-    **
+    *My goal with the layout of the project, when displayed within the terminal, was to ensure clear differentiation between the separate phases of the game. This is done through the use of a line break and the sleep method contained within the time library.*
 
 [Return to Table of Contents](#contents)
 
