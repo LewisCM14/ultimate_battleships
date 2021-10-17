@@ -111,60 +111,61 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 - **The Welcome Message**
 
-    *
+    * When a new game starts the welcome message is displayed.
 
-    *
+    * Within this the different types of ship are listed, as well as the: board size, total number of lives and the different styles of marker.
 
-    *
+    * The player is then prompted for name input, which adheres to the validation checks listed. Input is repeated until a valid name is entered. User feedback is then provided on the name they entered.
 
 ![The Welcome Message](/assets/images/deploy.png)
 
 - **The Board**
 
-    * 
+    * Once name input is validated, it is then used to create the player's board, which is displayed to them in the terminal for reference when placing their ships. The user is prompted to place each ship in turn, the ship name and size is displayed to them.
 
-    *
+    * Orientation, column and then row inputs are requested for the ship location, all having validation checks on them. Before fitment and collision checks are ran on the input location for the ship, which must be passed else the user is prompted for input again.
 
-    *
+    * Once a valid series of inputs are entered the ship is placed on the players board, their board is then printed to them with the placed ship for reference when placing the next. Once all ships are placed the computers ships are randomly placed on their board, following the same series of validation checks.
+
 ![The Game Board](/assets/images/board.png)
 
 - **The Guess Board**
 
-    *
+    * Once the ships have been placed on each board the game play sequence begins.
 
-    *
+    * The player always goes first, their guess board is printed out to them for reference when entering a column and row, which must pass validation checks. Once a valid input is entered the result of their attack is printed out to them before the guess board is updated and printed out to them again. Validation checks prevent the user repeat guessing or attacking a specific coordinate.
 
-    *
+    * The sleep method of the time library and a line break are used here to emphasize the individual turns, a countdown of three seconds is used before the computer makes their attack and the terminal is updated.
 
 ![The Guess Board](/assets/images/guess.png)
 
 - **Ship Display**
 
-    *
+    * Ships that haven't been hit are displayed on the player's board as solid squares.
 
-    *
+    * Letter notation is used for column display purposes and number notation for the rows, this allows for easy differentiation when inputting coordinates.
 
-    *
+    * Dashes are used for empty or coordinates that haven't been guessed, i felt this coupled with the squares to represent ships and O for a miss and X for a hit created a good level of contrast whilst also accurate representation of the intention behind the marker.
 
 ![Ship Display](/assets/images/ships.png)
 
 - **Game Play Display**
 
-    *
+    * User feedback is provided constantly throughout the game, specific to each phase.
 
-    *
+    * The turn sequence is broken down as well as the result of each players attack. The boards are updated appropriately as well as the life counter decremented when required.
 
-    *
+    * A consistent use of the sleep method and line breaks is also used throughout.
 
 ![A Hit Ship](/assets/images/hit.png)
 
 - **Play Again**
 
-    *
+    * Once the game end conditions have been met, which is a player having no lives left, the turn sequence is broken out off, with a win or lose message being displayed.
 
-    *
+    * The player is them prompted to play again, input validation is used here to ensure a Y or N is entered.
 
-    *
+    * If yes the game runs again from the begin, else the player is told goodbye and the program ends.
 
 ![Play Again Display](/assets/images/playagain.png)
 
