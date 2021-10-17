@@ -1,6 +1,6 @@
 # ULTIMATE BATTLESHIPS
 
-Ultimate Battleships is a pure python based mini game deployed to Heroku. Allowing the player to enter their own team name before placing their ships on the board. Collision and Fitment checks are run as well as input validation.
+Ultimate Battleships is a pure python based mini game deployed to Heroku. Allowing the player to enter their own team name before placing their ships on the board. Collision and fitment checks are run as well as input validation.
 
 User feedback is provided throughout with basic AI used to determine the computers attacks during the game play, with a life counter being utilized to signal game end, the option to play again or quit is presented at this point.
 
@@ -23,7 +23,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 - **User Stories**
 
-    *The site works off the assumption the user is already aware of the classic game: Battleships.*
+    *The application works off the assumption the user is already aware of the classic game: Battleships.*
 
     + **First Time Visitor Goals**
     
@@ -85,7 +85,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ![The Whole flow diagram](/assets/images/flowchart.jpeg)
 
-*The first step is to display the welcome message and collect a valid name input. This name input is then used to create the players board's to be used before the computer's board's are created.*
+*The first step is to display the welcome message and collect a valid name input. This name input is then used to create the player's board's to be used before the computer's board's are created.*
 
 ![The First Stage of the flow diagram](/assets/images/flow1.png)
 
@@ -296,7 +296,7 @@ The live link can be found here - [ULTIMATE BATTLESHIPS](https://ultimate-battle
         * Used to deploy my project.
     
     * **Regular Expression Operations Library (re).**
-        * Used for name and column input validation.
+        * Used for: name, orientation and column input validation.
     
     * **Time Access and Conversions Library (time).**
         * The sleep method from this library is used to aide display within the terminal.
