@@ -275,46 +275,34 @@ The live link can be found here - [ULTIMATE BATTLESHIPS](https://ultimate-battle
 
 - **Languages Used**
 
-    * HTML5
-    * CSS3
-    * JS
     * PYTHON
     * MARKDOWN
 
 - **Frameworks, Libraries & Programs Used**
 
     1. Balsamiq. 
-        * Balsamiq was used to create the wireframes during the development process.
+        * Used to create the wire frames during the development process.
     
     2. [Lucidchart](https://lucid.co/).
         * Used to create flow-diagrams during development.
 
-    3. [MyColor.Space](https://mycolor.space/).
-        * Used to define my colour pallet 
+    3. Git.
+        * Git was used for version control by utilizing the GitPod terminal to commit to Git and Push to GitHub.
 
-    4. [Google Fonts](https://fonts.google.com/). 
-        * Used to import the 
-
-    5. [Font Awesome](https://fontawesome.com/).
-        * Font Awesome was used on all pages throughout the website to add icons for aesthetic and UX purposes.
-
-    6. Git.
-        * Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
-
-    7. [GitHub](https://github.com/).
+    4. [GitHub](https://github.com/).
         * GitHub is used to store the projects code after being pushed from Git.
-
-    8. [Am i Responsive](http://ami.responsivedesign.is/).
-        * Used to create the hero image for readme.
-
-    9. [Iconifier](https://iconifier.net/).
-        * Used to create the favicon for the site.
     
-    10. [Beautify](https://codebeautify.org/).
-        * Used to beautify my: HTML, CSS and JS code.
-    
-    11. [Heroku](https://id.heroku.com/login).
+    5. [Heroku](https://id.heroku.com/login).
         * Used to deploy my project.
+    
+    6. Regular Expression Operations Library (re).
+        * Used for name and column input validation.
+    
+    7. Time Access and Conversions Library (time).
+        * The sleep method from this library is used to aide display within the terminal.
+
+    8. Generate Pseudo-Random Numbers Library (random).
+        * Used for ship placement and attack input on behalf of the computer.
 
 [Return to Table of Contents](#contents)
 
