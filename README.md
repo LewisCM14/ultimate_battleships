@@ -2,7 +2,7 @@
 
 Ultimate Battleships is a pure python based mini game deployed to Heroku. Allowing the player to enter their own team name before placing their ships on the board. Collision and Fitment checks are run as well as input validation.
 
-User feedback is provided throughout with basic AI used to determine the computers attacks during the game play, with a life counter being utilised to signal game end, the option to play again or quit is presented at this point.
+User feedback is provided throughout with basic AI used to determine the computers attacks during the game play, with a life counter being utilized to signal game end, the option to play again or quit is presented at this point.
 
 ![readme hero image](/assets/images/deploy.png)
 
@@ -81,7 +81,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ## Development <a name='development'></a>
 
-*Initial development was to create a flow diagram using [LucidChart](https://www.lucidchart.com/pages/) so i could begin exploring how the requirements for my game and their dependencies would work together. I adhered to [LucidChart](https://www.lucidchart.com/pages/) symbol notation and color coded my chart based on the differnt phases of the game.*
+*Initial development was to create a flow diagram using [LucidChart](https://www.lucidchart.com/pages/) so i could begin exploring how the requirements for my game and their dependencies would work together. I adhered to [LucidChart](https://www.lucidchart.com/pages/) symbol notation and color coded my chart based on the different phases of the game.*
 
 ![The Whole flow diagram](/assets/images/flowchart.jpeg)
 
@@ -319,28 +319,14 @@ The live link can be found here - [ULTIMATE BATTLESHIPS](https://ultimate-battle
 
 - **Content** 
 
-    * I used the breakpoints listed on [FreeCodeCamp](https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/) for my media queries.
+    * Various highlighted sections of my code are developed from this [YouTube Tutorial.](https://www.youtube.com/watch?v=tF1WRCrd_HQ&t=223s&ab_channel=KnowledgeMavens) However, my project is object orientated, with several extra features, so in most instances the base code has been padded out or accepts different arguments.
 
-    * 
+    * My use of the re library was based of this post on [Stack Overflow.](https://stackoverflow.com/questions/57062794/how-to-check-if-a-string-has-any-special-characters/57062899)
 
-    *  
-
-    * 
-
-    *  
-
-    *     
+    * My table of contents in the readme was developed from this post on [Stack Overflow.](https://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents)  
 
 - **Media**
 
-    * 
-
-    *
-
-    *
-    
-    *
-
-    *
+    * None Required.
 
 [Return to Table of Contents](#contents)

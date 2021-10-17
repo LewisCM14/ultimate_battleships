@@ -88,6 +88,8 @@ class GameBoard:
         'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9
         }
 
+    # Refer to readme for above code.
+
     # Valid row input
     row_input = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
 
@@ -117,6 +119,8 @@ class GameBoard:
             row_number += 1
         print(f'\nLIVES REMAINING: {self.lives}\n')
 
+    # Refer to readme for above code.
+
     def check_ship_fits(self, ship_length, row, column, orientation):
         """
         Holds the logic to check if the placed ship fits.
@@ -140,6 +144,8 @@ class GameBoard:
                     return False
             else:
                 return True
+
+    # Refer to readme for above code.
 
     def collision_check(self, board, row, column, orientation, ship_length):
         """
@@ -165,6 +171,8 @@ class GameBoard:
                     else:
                         return True
         return False
+
+    # Refer to readme for above code.
 
     def ship_prompt(self, ship_length):
         """
@@ -218,6 +226,8 @@ class GameBoard:
             except ValueError:
                 print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
         return orientation, column, row
+
+    # Refer to readme for above code.
 
     def place_ships(self):
         """
@@ -273,6 +283,8 @@ class GameBoard:
                                 print(' ')
                                 self.print_board()
                                 break
+
+    # Refer to readme for above code.
 
     def random_attk_int(self):
         """
@@ -366,6 +378,8 @@ class GameBoard:
                     break
         return column, row
 
+    # Refer to readme for above code.
+
     def lives_counter(self):
         """
         Updates the lives of the respective player,
@@ -378,6 +392,8 @@ class GameBoard:
                     count -= 1
                     self.lives = count
         return self.lives
+
+    # Refer to readme for above code.
 
     def check_miss_count(self):
         """
@@ -475,6 +491,8 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 computer_guess.attk_arry.append(1)
                 computer_guess.check_miss_count()
                 time.sleep(3)
+
+# Refer to readme for above code.
 
 
 def play_again():
