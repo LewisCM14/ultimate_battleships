@@ -6,18 +6,18 @@
 
 # Table of Contents
 
-* [User Experience (UX)](userexperience)
-* [Design](design)
-* [Development](development)
-* [Existing Features](existingfeatures)
-* [Features Left to Implement](toImplement)
-* [Testing](testing)
-* [Unfixed Bugs](bugs)
-* [Deployment](deployment)
-* [Technologies Used](tech)
-* [Credits](credits)
+* [User Experience (UX)](#userexperience)
+* [Design](#design)
+* [Development](#development)
+* [Existing Features](#existingfeatures)
+* [Features Left to Implement](#toImplement)
+* [Testing](#testing)
+* [Unfixed Bugs](#bugs)
+* [Deployment](#deployment)
+* [Technologies Used](#tech)
+* [Credits](#credits)
 
-## [User Experience (UX)](userexperience)
+## User Experience (UX) <a name='userexperience'></a>
 
 - **User Stories**
 
