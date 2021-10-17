@@ -81,7 +81,27 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ## Development <a name='development'></a>
 
-![Flowdiagram](/assets/images/flowchart.jpeg)
+*Initial development was to create a flow diagram using [LucidChart](https://www.lucidchart.com/pages/) so i could begin exploring how the requirements for my game and their dependencies would work together. I adhered to [LucidChart](https://www.lucidchart.com/pages/) symbol notation and color coded my chart based on the differnt phases of the game.*
+
+![The Whole flow diagram](/assets/images/flowchart.jpeg)
+
+*The first step is to display the welcome message and collect a valid name input. This name input is then used to create the players board's to be used before the computer's board's are created.*
+
+![The First Stage of the flow diagram](/assets/images/flow1.png)
+
+*The player can then begin adding their ships, collision, fitment and input validation checks must be run for each ship, once done the computers ships are randomly added to their board.*
+
+![The Second Stage of the flow diagram](/assets/images/flow2.png)
+
+*Once the board's are populated game play can begin, for each turn input validation checks must be run as well as the relevant board's information updated.*
+
+![The Third Stage of the flow diagram](/assets/images/flow3.png)
+
+*For each valid turn, game end conditions must be checked and if reached, the turn sequence must be broken out of and the game end logic run.*
+
+![The Fourth Stage of the flow diagram](/assets/images/flow4.png)
+
+*Once my flow diagram was completed i drew up a basic wire frame using Balsamiq so i could explore how the game would be displayed within the terminal.*
 
 ![Wireframe](/assets/images/wireframe.png)
 
