@@ -195,43 +195,37 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ## Testing <a name ='testing'></a>  
 
--  
+-  Due to the nature of the project testing has been conducted throughout its entirety, mainly through the use of running the program in the terminal and ensuring i get the output intended. Evidence of this is clear within my commits, with various debugs recorded. 
 
--   
+-  Various sections of code where also developed in isolation and outputs checked before being inserted into the running order as the size of the project grew.  
 
-- 
+-  Once at the finished point, limit testing has been conducted by myself and my peers on slack through the peer-code-review channel, there is currently no reported issues that cause the game to break.
 
 - **Validator Testing**
 
     - HTML
-        - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+        - Not within project scope.
 
     - CSS
-        - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
+        - Not within project scope.
 
     - JS
-        - No errors were found when passing through the [JS Quality tool](https://jshint.com/)
+        - Not within project scope.
 
     - Python
         - No errors were found when passing through the [PEP8 Validator tool](http://pep8online.com/)
 
 - **Lighthouse**
 
-![Lighthouse]()
-
-- . 
-
-- 
+    - Not within project scope.
 
 [Return to Table of Contents](#contents)
 
 ## Unfixed Bugs <a name ='bugs'></a>
 
--  
+-  The only bug i was unable to fix, due to not being able to replicate it, was an issue with how the board display was printed out to the terminal. My only instance of this bug was just after i utilized my updated legend. Once the guess board was printed out again on the next turn the display discrepancy wasn't present.
 
--
-
-![Bug]()
+![bug](/assets/images/glitch.png)
 
 [Return to Table of Contents](#contents)
 
