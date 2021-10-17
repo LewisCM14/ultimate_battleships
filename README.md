@@ -280,30 +280,33 @@ The live link can be found here - [ULTIMATE BATTLESHIPS](https://ultimate-battle
 
 - **Frameworks, Libraries & Programs Used**
 
-    1. Balsamiq. 
+    * **Balsamiq.** 
         * Used to create the wire frames during the development process.
     
-    2. [Lucidchart](https://lucid.co/).
+    * **[Lucidchart](https://lucid.co/).**
         * Used to create flow-diagrams during development.
 
-    3. Git.
+    * **Git.**
         * Git was used for version control by utilizing the GitPod terminal to commit to Git and Push to GitHub.
 
-    4. [GitHub](https://github.com/).
+    * **[GitHub](https://github.com/).**
         * GitHub is used to store the projects code after being pushed from Git.
     
-    5. [Heroku](https://id.heroku.com/login).
+    * **[Heroku](https://id.heroku.com/login).**
         * Used to deploy my project.
     
-    6. Regular Expression Operations Library (re).
+    * **Regular Expression Operations Library (re).**
         * Used for name and column input validation.
     
-    7. Time Access and Conversions Library (time).
+    * **Time Access and Conversions Library (time).**
         * The sleep method from this library is used to aide display within the terminal.
 
-    8. Generate Pseudo-Random Numbers Library (random).
+    * **Generate Pseudo-Random Numbers Library (random).**
         * Used for ship placement and attack input on behalf of the computer.
-
+    
+    * **Slack.**
+        * Specifically the peer-code_review channel on Code Institutes Slack workspace. Used to increase the scope of my testing.
+    
 [Return to Table of Contents](#contents)
 
 ## Credits <a name = 'credits'></a> 
