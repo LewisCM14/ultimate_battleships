@@ -27,35 +27,29 @@ User feedback is provided throughout with basic AI used to determine the compute
 
     + **First Time Visitor Goals**
     
-        A. 
+        A. Welcome the User.
 
-        B. 
+        B. Highlight to the user key aspects of the game play layout.
 
-        C.  
+        C. Encouraged them to enter a team name and begin a game.
 
     + **Returning Visitor Goals**
 
-        A.  
+        A. Begin testing the limits of the user input during game play.  
 
-        B.
+        B. Become familiar with the game layout.
 
-        C. 
+        C. Attempt to beat the computer.
 
     + **Frequent Visitor Goals**
 
-        A. 
+        A. Explore different styles of game play.
 
-        B.
-
-        C. 
+        B. Develop individual tactics for game play.
 
     - **Owners Story**
 
-        A. 
-
-        B.
-
-        C. 
+        *The main goal of the project is to create a robust python application that provides enjoyment to the user. This is done by allowing as much user based decision making as possible, with constant feedback provided. Basic AI is used to place the user in a challenging environment during game play, helping pull the application away from simply feeling like a data entry sequence.*
 
 - **Research**
 
