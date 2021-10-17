@@ -89,7 +89,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ![The First Stage of the flow diagram](/assets/images/flow1.png)
 
-*The player can then begin adding their ships, collision, fitment and input validation checks must be run for each ship, once done the computers ships are randomly added to their board.*
+*The player can then begin adding their ships. Collision, fitment and input validation checks must be run for each ship, once done the computers ships are randomly added to their board.*
 
 ![The Second Stage of the flow diagram](/assets/images/flow2.png)
 
@@ -103,21 +103,70 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 *Once my flow diagram was completed i drew up a basic wire frame using Balsamiq so i could explore how the game would be displayed within the terminal.*
 
-![Wireframe](/assets/images/wireframe.png)
+![Wire frame](/assets/images/wireframe.png)
 
 [Return to Table of Contents](#contents)
 
 ## Existing Features <a name='existingfeatures'></a>
 
-![image of the index page]()
+- **The Welcome Message**
 
-- **The Header**
+    *
+
+    *
+
+    *
+
+![The Welcome Message](/assets/images/deploy.png)
+
+- **The Board**
 
     * 
 
     *
 
     *
+![The Game Board](/assets/images/board.png)
+
+- **The Guess Board**
+
+    *
+
+    *
+
+    *
+
+![The Guess Board](/assets/images/guess.png)
+
+- **Ship Display**
+
+    *
+
+    *
+
+    *
+
+![Ship Display](/assets/images/ships.png)
+
+- **Game Play Display**
+
+    *
+
+    *
+
+    *
+
+![A Hit Ship](/assets/images/hit.png)
+
+- **Play Again**
+
+    *
+
+    *
+
+    *
+
+![Play Again Display](/assets/images/playagain.png)
 
 [Return to Table of Contents](#contents)
 
