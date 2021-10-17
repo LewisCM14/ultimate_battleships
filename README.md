@@ -10,7 +10,7 @@
 * [Design](#design)
 * [Development](#development)
 * [Existing Features](#existingfeatures)
-* [Features Left to Implement](#toImplement)
+* [Features Left to Implement](#toimplement)
 * [Testing](#testing)
 * [Unfixed Bugs](#bugs)
 * [Deployment](#deployment)
@@ -59,7 +59,7 @@
 
     **
 
-## [Design](design)
+## Design <a name='design'></a>
 
 - **Colour Scheme**
 
@@ -84,13 +84,13 @@
 
     **
 
-## [Development](development)
+## Development <a name='development'></a>
 
 ![Flowdiagram]()
 
 ![Wireframe]()
 
-## [Existing Features](existingfeatures)
+## Existing Features <a name='existingfeatures'></a>
 
 ![image of the index page]()
 
@@ -102,7 +102,7 @@
 
     *
 
-## [Features Left to Implement](toImplement)
+## Features Left to Implement <a name ='toimplement'></a>
 
 * 
 
@@ -110,7 +110,7 @@
 
 * 
 
-## [Testing](testing)  
+## Testing <a name ='testing'></a>  
 
 -  
 
@@ -139,14 +139,14 @@
 - . 
 
 - 
-## [Unfixed Bugs](bugs)
+## Unfixed Bugs <a name ='bugs'></a>
 
 -  
 
 -
 
 ![Bug]()
-## [Deployment](deployment)
+## Deployment <a name ='deployment'></a>
 
 - The site is deployed to GitHub pages. The steps to deploy are as follows: 
 
@@ -179,7 +179,7 @@ The live link can be found here - []()
 
 The live link can be found here - []()
 
-## [Technologies Used](tech)
+## Technologies Used <a name ='tech'></a>
 
 - **Languages Used**
 
@@ -223,7 +223,7 @@ The live link can be found here - []()
     
     11. [Heroku](https://id.heroku.com/login).
         * Used to deploy my project.
-## [Credits](credits) 
+## Credits <a name = 'credits'></a> 
 
 * A special thank you to my mentor Can Sucullu. 
 
