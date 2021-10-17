@@ -81,9 +81,9 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ## Development <a name='development'></a>
 
-![Flowdiagram]()
+![Flowdiagram](/assets/images/flowchart.jpeg)
 
-![Wireframe]()
+![Wireframe](/assets/images/wireframe.png)
 
 [Return to Table of Contents](#contents)
 
