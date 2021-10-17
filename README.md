@@ -133,7 +133,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
     * Once the ships have been placed on each board the game play sequence begins.
 
-    * The player always goes first, their guess board is printed out to them for reference when entering a column and row, which must pass validation checks. Once a valid input is entered the result of their attack is printed out to them before the guess board is updated and printed out to them again. Validation checks prevent the user repeat guessing or attacking a specific coordinate.
+    * The player always goes first, their guess board is printed out to them for reference when entering a column and row, which must pass validation checks. Once a valid input is entered the result of their attack is printed out to them before the guess board is updated and printed out to them again. Validation checks prevent the user repeat guessing or attacking each specific coordinate.
 
     * The sleep method of the time library and a line break are used here to emphasize the individual turns, a countdown of three seconds is used before the computer makes their attack and the terminal is updated.
 
@@ -165,7 +165,7 @@ User feedback is provided throughout with basic AI used to determine the compute
 
     * The player is them prompted to play again, input validation is used here to ensure a Y or N is entered.
 
-    * If yes the game runs again from the begin, else the player is told goodbye and the program ends.
+    * If yes the game runs again from the beginning, else the player is told goodbye and the program ends.
 
 ![Play Again Display](/assets/images/playagain.png)
 
@@ -173,11 +173,23 @@ User feedback is provided throughout with basic AI used to determine the compute
 
 ## Features Left to Implement <a name ='toimplement'></a>
 
-* 
+*There are no features left to implement from the initial scope of my project, however i have some features that i would like to add in the future.*
 
-*  
+*  Allow the user to adjust their name if they are not happy with the initial input.
 
-* 
+*  Allow: Orientation, Column and Row inputs to be placed on the same line.
+
+* Print the Player Board and Guess Board side by side in the terminal, rather than on top of one another.
+
+* Highlight the Win or Lose message to greater effect.
+
+* Refine the Computer Attack AI logic. I feel, rather than breaking out of the loop and returning a random input at the points marked on the image below. Which i had to do to prevent the computer getting stuck in an infinite loop if there wasn't a valid input coordinate based on their last hit, a more elegant solution could be developed. 
+
+    Possibly checking for the total number of attempts at producing a valid coordinate before returning a random input. Due to the code logic currently only one attempt is made per turn, when multiple attempts could be made to ensure all options have been explored per turn. 
+    
+    Whilst on the face of it this solution appears simple, due to me using random when the computer decides to go left or right and top or bottom based off their last hit coordinate several alterations to the code are required to implement this solution which didn't fit inside my project deadline. Having developed the code to allow for column and row inputs to be entered together from the start would perhaps have made these alterations easier.
+
+![Code mentioned above](/assets/images/improve.png)
 
 [Return to Table of Contents](#contents)
 
