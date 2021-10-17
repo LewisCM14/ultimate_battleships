@@ -1,8 +1,10 @@
 # ULTIMATE BATTLESHIPS
 
-*Short Project Into*
+Ultimate Battleships is a pure python based mini game deployed to Heroku. Allowing the player to enter their own team name before placing their ships on the board. Collision and Fitment checks are run as well as input validation.
 
-![readme hero image]()
+User feedback is provided throughout with basic AI used to determine the computers attacks during the game play, with a life counter being utilised to signal game end, the option to play again or quit is presented at this point.
+
+![readme hero image](/assets/images/deploy.png)
 
 # Table of Contents <a name='contents'></a>
 
